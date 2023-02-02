@@ -6,7 +6,7 @@ class User {
     this.score = score;
   }
   // Save new user to the database
-  async save() {
+  save() {
     let sql = `
     INSERT INTO users(
       username,
@@ -18,7 +18,7 @@ class User {
     )
     `;
 
-    const newUser = await db.execute(sql);
+    const newUser = db.execute(sql);
 
     return newUser;
   }

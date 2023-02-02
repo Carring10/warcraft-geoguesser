@@ -1,16 +1,24 @@
 const User = require('../models/User');
 
 exports.getAllUsers = async (req, res, next) => {
-  res.send("Get all users route");
+  try {
+    const users = await User.findAll();
+
+    res.status(200).json({users});
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 exports.createNewUser = async (req, res, next) => {
-  let { username, score } = req.body;
-  let user = new User(username, score);
+  try {
+    let { username, score } = req.body;
+    let user = new User(username, score);
 
-  user = await user.save();
+    user = await user.save();
 
-  console.log(user);
-
-  res.send("Create user route");
+    res.status(201).json({ message: "User created!" });
+  } catch (error) {
+    console.log(err);
+  }
 }

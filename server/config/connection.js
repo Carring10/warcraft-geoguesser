@@ -22,4 +22,4 @@ db.execute(sql, function (err, result) {
   console.log(result);
 })
 
-module.exports = db;
+module.exports = db.promise();
