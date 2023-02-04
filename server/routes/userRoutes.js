@@ -8,6 +8,6 @@ router.route("/")
   .post(userControllers.createNewUser);
   
 
-router.route("/:username").put(userControllers.updateScore);
+router.route("/:id").put(userControllers.updateScore);
 
 module.exports = router;

@@ -26,10 +26,15 @@ exports.createNewUser = async (req, res) => {
 
 exports.updateScore = async (req, res) => {
   try {
-    console.log("update", req.params.username);
-    console.log("score", req.body);
+    // Find one
+    const userId = req.params.id;
+    const [user, _] = await User.findById(userId);
 
-    res.status(200).json("updated");
+    console.log('here', user[0])
+
+    // Update: 
+
+    res.status(200).json(user);
   } catch (err) {
     console.log(err)
   }
