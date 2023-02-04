@@ -6,5 +6,8 @@ const router = express.Router();
 router.route("/")
   .get(userControllers.getAllUsers)
   .post(userControllers.createNewUser);
+  
+
+router.route("/:username").put(userControllers.updateScore);
 
 module.exports = router;

@@ -6,7 +6,7 @@ class User {
     this.score = score;
   }
   // Save new user to the database
-  save() {
+  create() {
     let sql = `
     INSERT INTO users(
       username,
@@ -21,6 +21,12 @@ class User {
     const newUser = db.execute(sql);
 
     return newUser;
+  }
+  // Update user's score
+  static update() {
+    let sql = `UPDATE users SET '${this.score}' WHERE '${username}'`;
+
+    return db.execute(sql);
   }
 
   static findAll() {
