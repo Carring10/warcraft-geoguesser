@@ -13,7 +13,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.createNewUser = async (req, res) => {
   try {
-    let { username, score } = req.body;
+    const { username, score } = req.body;
     let user = new User(username, score);
 
     user = await user.create();
@@ -29,9 +29,9 @@ exports.updateScore = async (req, res) => {
     const username = req.params.username;
     const score = req.body.score;
 
-    const updatedScore = await User.update(username, score);
+    await User.update(username, score);
 
-    res.status(200).json({ updatedScore });
+    res.status(200).json({ message: "User's score updated!" });
   } catch (err) {
     console.log(err)
   }

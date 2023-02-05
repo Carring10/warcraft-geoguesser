@@ -5,6 +5,12 @@ class User {
     this.username = username;
     this.score = score;
   }
+
+  static findAll() {
+    let sql = "SELECT * FROM users;";
+
+    return db.execute(sql);
+  }
   // Save new user to the database
   create() {
     let sql = `
@@ -29,12 +35,6 @@ class User {
     SET score = ${score} 
     WHERE username = '${username}'; 
     `;
-
-    return db.execute(sql);
-  }
-
-  static findAll() {
-    let sql = "SELECT * FROM users;";
 
     return db.execute(sql);
   }
