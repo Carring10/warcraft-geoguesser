@@ -23,13 +23,12 @@ class User {
     return newUser;
   }
   // Update user's score
-  static update() {
+  static update(username, score) {
     let sql = `
-    SET
-      username = '${this.username}',
-      score = '${this.score}'
-    WHERE id = ${id};
-  `;
+    UPDATE users
+    SET score = ${score} 
+    WHERE username = '${username}'; 
+    `;
 
     return db.execute(sql);
   }
@@ -37,12 +36,6 @@ class User {
   static findAll() {
     let sql = "SELECT * FROM users;";
 
-    return db.execute(sql);
-  }
-
-  static findById(id) {
-    let sql = `SELECT * FROM users WHERE id = ${id};`;
-    
     return db.execute(sql);
   }
 }
