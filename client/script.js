@@ -57,3 +57,14 @@ beginQuiz.addEventListener('click', function (event) {
   startScreen.style.display = 'none';
   quizContainer.style.display = 'block';
 });
+
+function displayZone() {
+  const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
+  randomizeZones.shift();
+  console.log(randomizeZones);
+  const chosenZone = randomizeZones[0];
+  console.log(chosenZone);
+  const zoneName = chosenZone.name;
+}
+
+displayZone();
