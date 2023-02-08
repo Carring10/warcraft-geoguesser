@@ -40,4 +40,20 @@ const zones = [
     img: '',
     hint: "This zone shares the name with the queen of the Naga."
   },
-]
+];
+
+const startScreen = document.querySelector('.start-screen');
+const beginQuiz = document.getElementById('start-button');
+const quizContainer = document.querySelector('.quiz-container');
+
+function hideQuiz() {
+  quizContainer.style.display = 'none';
+}
+
+hideQuiz();
+
+beginQuiz.addEventListener('click', function (event) {
+  event.preventDefault();
+  startScreen.style.display = 'none';
+  quizContainer.style.display = 'block';
+});
