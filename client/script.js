@@ -45,6 +45,10 @@ const zones = [
 const startScreen = document.querySelector('.start-screen');
 const beginQuiz = document.getElementById('start-button');
 const gameContainer = document.querySelector('.game-container');
+const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
+const chosenZone = randomizeZones[0];
+
+
 
 function hideGame() {
   gameContainer.style.display = 'none';
@@ -59,20 +63,39 @@ beginQuiz.addEventListener('click', function (event) {
 });
 
 function displayZone() {
-  const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
   randomizeZones.shift();
-  const chosenZone = randomizeZones[0];
   const zoneName = chosenZone.name;
-
   const img = document.createElement('p');
+  const inputFields = document.createElement('div');
+
   img.innerHTML = zoneName;
   gameContainer.appendChild(img);
+  gameContainer.appendChild(inputFields);
+
+  inputFields.setAttribute('id', 'input-fields');
 
   for (let i = 0; i < zoneName.length; i++) {
     const input = document.createElement('input');
-    gameContainer.appendChild(input);
+
+    inputFields.appendChild(input);
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', '1');
+    input.setAttribute('id', 'input');
+  }
+
+  for (let input of inputFields.children) {
+    input.oninput = function () {
+      if (input.nextElementSibling && input.value.length === 1) {
+        console.log(input.value)
+        input.nextElementSibling.focus();
+      }
+    }
+    input.onkeydown = function (event) {
+      const key = event.key;
+      if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
+        input.previousElementSibling.focus();
+      }
+    }
   }
 }
 
