@@ -47,6 +47,8 @@ const beginQuiz = document.getElementById('start-button');
 const gameContainer = document.querySelector('.game-container');
 const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
 const chosenZone = randomizeZones[0];
+const zoneName = chosenZone.name;
+
 
 
 
@@ -64,12 +66,15 @@ beginQuiz.addEventListener('click', function (event) {
 
 function displayZone() {
   randomizeZones.shift();
-  const zoneName = chosenZone.name;
   const img = document.createElement('p');
-  const inputFields = document.createElement('div');
 
   img.innerHTML = zoneName;
   gameContainer.appendChild(img);
+
+}
+
+function displayInputFields() {
+  const inputFields = document.createElement('div');
   gameContainer.appendChild(inputFields);
 
   inputFields.setAttribute('id', 'input-fields');
@@ -82,14 +87,14 @@ function displayZone() {
     input.setAttribute('maxlength', '1');
     input.setAttribute('id', 'input');
   }
-
+  // Auto focus the next input field
   for (let input of inputFields.children) {
     input.oninput = function () {
       if (input.nextElementSibling && input.value.length === 1) {
-        console.log(input.value)
         input.nextElementSibling.focus();
       }
     }
+    // When backspacing, focus the previous input field
     input.onkeydown = function (event) {
       const key = event.key;
       if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
@@ -100,3 +105,4 @@ function displayZone() {
 }
 
 displayZone();
+displayInputFields();
