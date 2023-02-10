@@ -49,9 +49,6 @@ const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
 const chosenZone = randomizeZones[0];
 const zoneName = chosenZone.name;
 
-
-
-
 function hideGame() {
   gameContainer.style.display = 'none';
 }
@@ -70,14 +67,20 @@ function displayZone() {
 
   img.innerHTML = zoneName;
   gameContainer.appendChild(img);
-
 }
 
-function displayInputFields() {
+function handleInput() {
   const inputFields = document.createElement('div');
+  const submit = document.createElement('button');
+  const characters = [];
+
   gameContainer.appendChild(inputFields);
+  gameContainer.appendChild(submit);
 
   inputFields.setAttribute('id', 'input-fields');
+  submit.setAttribute('id', 'submit-button');
+
+  submit.textContent = 'Submit';
 
   for (let i = 0; i < zoneName.length; i++) {
     const input = document.createElement('input');
@@ -102,7 +105,14 @@ function displayInputFields() {
       }
     }
   }
+  // Submit letters from input
+  submit.addEventListener('click', function () {
+    const inputs = document.querySelectorAll('#input');
+    inputs.forEach((input) => {
+      characters.push(input.value);
+    })
+  });
 }
 
 displayZone();
-displayInputFields();
+handleInput();
