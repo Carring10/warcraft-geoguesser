@@ -29,7 +29,7 @@ exports.updateScore = async (req, res) => {
     const username = req.params.username;
     const score = req.body.score;
 
-    await User.update(username, score);
+    await User.updateScore(username, score);
 
     res.status(200).json({ message: "User's score updated!" });
   } catch (err) {

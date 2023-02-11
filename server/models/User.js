@@ -16,11 +16,15 @@ class User {
     let sql = `
     INSERT INTO users(
       username,
-      score
+      score,
+      lives,
+      hints
     )
     VALUES(
       '${this.username}',
-      '${this.score}'
+      '${this.score}',
+      '3',
+      '3'
     )
     `;
 
@@ -29,7 +33,7 @@ class User {
     return newUser;
   }
   // Update user's score
-  static update(username, score) {
+  static updateScore(username, score) {
     let sql = `
     UPDATE users
     SET score = ${score} 
