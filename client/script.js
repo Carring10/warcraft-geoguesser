@@ -72,7 +72,7 @@ function displayZone() {
 function handleInput() {
   const inputFields = document.createElement('div');
   const submit = document.createElement('button');
-  const characters = [];
+  const userInput = [];
 
   gameContainer.appendChild(inputFields);
   gameContainer.appendChild(submit);
@@ -109,10 +109,20 @@ function handleInput() {
   submit.addEventListener('click', function () {
     const inputs = document.querySelectorAll('#input');
     inputs.forEach((input) => {
-      characters.push(input.value);
-    })
+      userInput.push(input.value);
+    });
+    // Check user's answer
+    const inputStr = userInput.toString().replaceAll(',', '').toLowerCase();
+    const answerKey = zoneName.toLowerCase();
+
+    if (inputStr === answerKey) {
+      console.log('correct')
+    } else {
+      console.log('incorrect')
+    }
   });
 }
+
 
 displayZone();
 handleInput();
