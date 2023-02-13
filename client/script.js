@@ -1,11 +1,15 @@
-import {zones} from './zones.js';
+import { zones } from './zones.js';
+
+// fetch('http://localhost:3001/users')
+//   .then(res => res.json())
+//   .then(data => console.log(data))
 
 const startScreen = document.querySelector('.start-screen');
 const beginQuiz = document.getElementById('start-button');
 const gameContainer = document.querySelector('.game-container');
+const zoneContainer = document.createElement('div');
 const randomizeZones = [...zones].sort(() => 0.5 - Math.random());
-const chosenZone = randomizeZones[0];
-const zoneName = chosenZone.name;
+let currentZone = randomizeZones[0];
 
 function hideGame() {
   gameContainer.style.display = 'none';
@@ -15,32 +19,36 @@ hideGame();
 
 beginQuiz.addEventListener('click', function (event) {
   event.preventDefault();
+
   startScreen.style.display = 'none';
   gameContainer.style.display = 'block';
 });
 
-function displayZone() {
+function displayZone(zone) {
   randomizeZones.shift();
   const img = document.createElement('p');
 
-  img.innerHTML = zoneName;
-  gameContainer.appendChild(img);
+  img.innerHTML = zone.name;
+  gameContainer.appendChild(zoneContainer);
+  zoneContainer.appendChild(img);
 }
 
-function handleInput() {
+displayZone(currentZone);
+
+function handleInput(zone) {
   const inputFields = document.createElement('div');
   const submit = document.createElement('button');
-  const userInput = [];
+  let userInput = [];
 
-  gameContainer.appendChild(inputFields);
-  gameContainer.appendChild(submit);
+  zoneContainer.appendChild(inputFields);
+  zoneContainer.appendChild(submit);
 
   inputFields.setAttribute('id', 'input-fields');
   submit.setAttribute('id', 'submit-button');
 
   submit.textContent = 'Submit';
 
-  for (let i = 0; i < zoneName.length; i++) {
+  for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
 
     inputFields.appendChild(input);
@@ -66,25 +74,43 @@ function handleInput() {
   // Submit letters from input
   submit.addEventListener('click', function () {
     const inputs = document.querySelectorAll('#input');
+    userInput = [];
+
     inputs.forEach((input) => {
       userInput.push(input.value);
     });
     // Check user's answer
     const inputStr = userInput.toString().replaceAll(',', '').toLowerCase();
-    const answerKey = zoneName.toLowerCase();
+    const answerKey = zone.name.toLowerCase();
 
     if (inputStr === answerKey) {
-      console.log('correct')
-    } else {
+      console.log('correct');
+      createNextBtn();
+    } else if (inputStr !== '') {
       console.log('incorrect')
+      createNextBtn();
+    }
+    console.log(userInput)
+    // Next zone
+    function createNextBtn() {
+      const nextBtn = document.createElement('button');
+      zoneContainer.appendChild(nextBtn);
+      nextBtn.textContent = 'Next';
+
+      nextBtn.addEventListener('click', function () {
+        if (inputStr !== '') {
+          getNextZone();
+        }
+      });
     }
   });
 }
 
-// fetch('http://localhost:3001/users')
-//   .then(res => res.json())
-//   .then(data => console.log(data))
+function getNextZone() {
+  currentZone = randomizeZones[0];
 
+  displayZone(currentZone);
+  handleInput(currentZone);
+}
 
-displayZone();
-handleInput();
+handleInput(currentZone);

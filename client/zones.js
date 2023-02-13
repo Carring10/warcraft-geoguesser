@@ -26,11 +26,6 @@ export const zones = [
     hint: "It is a corrupted forest filled with tainted creatures of the woods, demonic satyr and infernals, and rotting treants and ancients."
   },
   {
-    name: 'Felwood',
-    img: 'placeholder',
-    hint: "It is a corrupted forest filled with tainted creatures of the woods, demonic satyr and infernals, and rotting treants and ancients."
-  },
-  {
     name: 'Ashenvale',
     img: 'placeholder',
     hint: "This is one of the first contested zones new players on PvP servers will come across on kalimdor."
