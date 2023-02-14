@@ -4,11 +4,12 @@ const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
 const gameContainer = document.querySelector('.game-container');
 const zoneName = document.getElementById('zone-name');
+const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
 
-const shuffleZones = [...zones].sort(() => 0.5 - Math.random());
-let currentZone = shuffleZones[0];
+let shuffledZones, currentZone
+let userInput = [];
 
 function hideGame() {
   gameContainer.style.display = 'none';
@@ -17,23 +18,30 @@ function hideGame() {
 hideGame();
 
 start.addEventListener('click', startGame);
+next.addEventListener('click', () => {
+  currentZone++
+  reset();
+  getNextZone();
+});
 
 function startGame() {
   startScreen.style.display = 'none';
   gameContainer.style.display = 'block';
+  next.style.display = 'none';
 
-  getNextZone()
+  shuffledZones = [...zones].sort(() => 0.5 - Math.random());
+  currentZone = 0
+
+  getNextZone();
 }
 
 function getNextZone() {
-  currentZone = shuffleZones[0];
-  showZone(currentZone);
+  let zone = shuffledZones[currentZone];
+  showZone(zone);
 }
 
 function showZone(zone) {
-  zoneName.innerHTML = zone.name;
-
-  const inputFields = document.getElementById('input-fields');
+  zoneName.innerText = zone.name;
 
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
@@ -58,19 +66,22 @@ function showZone(zone) {
       }
     }
   }
-  submit.addEventListener('click', handleInput);
+  submit.addEventListener('click', function () {
+    handleInput(zone);
+
+    next.style.display = 'block';
+  });
 }
 
-function handleInput() {
+function handleInput(zone) {
   const inputs = document.querySelectorAll('#input');
-  let userInput = [];
 
   inputs.forEach((input) => {
     userInput.push(input.value);
   });
   // Check user's answer
   const inputStr = userInput.toString().replaceAll(',', '').toLowerCase();
-  const answerKey = currentZone.name.toLowerCase();
+  const answerKey = zone.name.toLowerCase();
 
   if (inputStr === answerKey) {
     console.log('correct');
@@ -80,4 +91,14 @@ function handleInput() {
   console.log(userInput);
 
   next.style.display = 'display';
+}
+
+function reset() {
+  next.style.display = 'none';
+  userInput = [];
+  console.log('reset', userInput);
+
+  while (inputFields.firstChild) {
+    inputFields.removeChild(inputFields.firstChild);
+  }
 }
