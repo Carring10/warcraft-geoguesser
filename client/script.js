@@ -18,6 +18,7 @@ function hideGame() {
 hideGame();
 
 start.addEventListener('click', startGame);
+
 next.addEventListener('click', () => {
   currentZone++
   reset();
@@ -61,9 +62,12 @@ function showZone(zone) {
     // When backspacing, focus the previous input field
     input.onkeydown = function (event) {
       const key = event.key;
+      if (input.nextElementSibling === null && key === 'Backspace' || key === 'Delete') {
+        event.target.value = '';
+      }
       if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
         input.previousElementSibling.focus();
-      }
+      } 
     }
   }
   submit.addEventListener('click', function () {
