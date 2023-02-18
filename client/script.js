@@ -8,7 +8,7 @@ const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
 
-let shuffledZones, currentZone
+let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
 
 function hideGame() {
@@ -19,8 +19,13 @@ hideGame();
 
 start.addEventListener('click', startGame);
 
+submit.addEventListener('click', function () {
+  handleInput(zone);
+
+  next.style.display = 'block';
+});
+
 next.addEventListener('click', () => {
-  currentZone++
   reset();
   getNextZone();
 });
@@ -31,13 +36,14 @@ function startGame() {
   next.style.display = 'none';
 
   shuffledZones = [...zones].sort(() => 0.5 - Math.random());
-  currentZone = 0
+  currentZoneIndex = 0
 
   getNextZone();
 }
 
 function getNextZone() {
-  let zone = shuffledZones[currentZone];
+  currentZoneIndex++
+  zone = shuffledZones[currentZoneIndex];
   showZone(zone);
 }
 
@@ -67,14 +73,9 @@ function showZone(zone) {
       }
       if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
         input.previousElementSibling.focus();
-      } 
+      }
     }
   }
-  submit.addEventListener('click', function () {
-    handleInput(zone);
-
-    next.style.display = 'block';
-  });
 }
 
 function handleInput(zone) {
@@ -92,7 +93,6 @@ function handleInput(zone) {
   } else if (inputStr !== '') {
     console.log('incorrect')
   }
-  console.log(userInput);
 
   next.style.display = 'display';
 }
@@ -100,7 +100,6 @@ function handleInput(zone) {
 function reset() {
   next.style.display = 'none';
   userInput = [];
-  console.log('reset', userInput);
 
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
