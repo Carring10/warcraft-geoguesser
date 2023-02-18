@@ -47,7 +47,7 @@ function getNextZone() {
   showZone(zone);
 }
 
-function showZone(zone) {
+function showZone() {
   zoneName.innerText = zone.name;
 
   for (let i = 0; i < zone.name.length; i++) {
@@ -78,7 +78,7 @@ function showZone(zone) {
   }
 }
 
-function handleInput(zone) {
+function handleInput() {
   const inputs = document.querySelectorAll('#input');
 
   inputs.forEach((input) => {
