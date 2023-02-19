@@ -20,9 +20,13 @@ hideGame();
 start.addEventListener('click', startGame);
 
 submit.addEventListener('click', function () {
-  handleInput(zone);
-
-  next.style.display = 'block';
+  handleInput();
+// To prevent user from moving on without attempting
+  userInput.forEach((character) => {
+    if (character !== '') {
+      next.style.display = 'block';
+    }
+  })
 });
 
 next.addEventListener('click', () => {
@@ -68,10 +72,8 @@ function showZone() {
     // When backspacing, focus the previous input field
     input.onkeydown = function (event) {
       const key = event.key;
-      if (input.nextElementSibling === null && key === 'Backspace' || key === 'Delete') {
-        event.target.value = '';
-      }
       if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
+        event.target.value = '';
         input.previousElementSibling.focus();
       }
     }
@@ -93,8 +95,6 @@ function handleInput() {
   } else if (inputStr !== '') {
     console.log('incorrect')
   }
-
-  next.style.display = 'display';
 }
 
 function reset() {
@@ -105,3 +105,6 @@ function reset() {
     inputFields.removeChild(inputFields.firstChild);
   }
 }
+
+
+
