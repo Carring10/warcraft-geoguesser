@@ -48,17 +48,19 @@ function startGame() {
 
   shuffledZones = [...zones].sort(() => 0.5 - Math.random());
   currentZoneIndex = 0
+  zone = shuffledZones[currentZoneIndex];
 
-  getNextZone();
+  showZone(zone);
 }
 
 function getNextZone() {
   currentZoneIndex++
   zone = shuffledZones[currentZoneIndex];
+
   showZone(zone);
 }
 
-function showZone() {
+function showZone(zone) {
   zoneName.innerText = zone.name;
 
   for (let i = 0; i < zone.name.length; i++) {
@@ -114,4 +116,8 @@ function reset() {
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
   }
+}
+
+function showScoreScreen() {
+  scoreScreen.style.display = 'block';
 }
