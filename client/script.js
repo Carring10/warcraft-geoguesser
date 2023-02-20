@@ -57,7 +57,11 @@ function getNextZone() {
   currentZoneIndex++
   zone = shuffledZones[currentZoneIndex];
 
-  showZone(zone);
+  if (zone !== undefined) {
+    showZone(zone);
+  } else {
+    showScoreScreen();
+  }
 }
 
 function showZone(zone) {
@@ -120,4 +124,5 @@ function reset() {
 
 function showScoreScreen() {
   scoreScreen.style.display = 'block';
+  gameContainer.style.display = 'none';
 }
