@@ -21,7 +21,7 @@ start.addEventListener('click', startGame);
 
 submit.addEventListener('click', function () {
   handleInput();
-// To prevent user from moving on without attempting
+  // To prevent user from moving on without attempting
   userInput.forEach((character) => {
     if (character !== '') {
       next.style.display = 'block';
@@ -63,8 +63,11 @@ function showZone() {
     input.setAttribute('id', 'input');
   }
   // Auto focus the next input field
+  inputFields.firstElementChild.focus();
   for (let input of inputFields.children) {
     input.oninput = function () {
+      if (input.firstElementChild) {
+      }
       if (input.nextElementSibling && input.value.length === 1) {
         input.nextElementSibling.focus();
       }
