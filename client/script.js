@@ -125,4 +125,21 @@ function reset() {
 function showScoreScreen() {
   scoreScreen.style.display = 'block';
   gameContainer.style.display = 'none';
+
+  fetch('http://localhost:3001/users')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (let i = 0; i < data.users.length; i++) {
+        const userName = document.createElement('h2');
+        const userScore = document.createElement('p');
+
+        userName.textContent = data.users[i].username;
+        userScore.textContent = data.users[i].score;
+
+        scoreScreen.appendChild(userName);
+        scoreScreen.appendChild(userScore);
+      }
+    });
 }
