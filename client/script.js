@@ -7,6 +7,7 @@ const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
+const scoreScreen = document.querySelector('.score-screen');
 
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
@@ -16,6 +17,12 @@ function hideGame() {
 }
 
 hideGame();
+
+function hideScoreScreen() {
+  scoreScreen.style.display = 'none';
+}
+
+hideScoreScreen();
 
 start.addEventListener('click', startGame);
 
@@ -108,6 +115,3 @@ function reset() {
     inputFields.removeChild(inputFields.firstChild);
   }
 }
-
-
-
