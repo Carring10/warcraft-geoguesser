@@ -3,6 +3,9 @@ import { zones } from './zones.js';
 const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
 const gameContainer = document.querySelector('.game-container');
+const round = document.getElementById('round');
+const lives = document.getElementById('lives');
+const score = document.getElementById('score');
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
@@ -37,6 +40,7 @@ submit.addEventListener('click', function () {
 });
 
 next.addEventListener('click', () => {
+  round.innerHTML++;
   reset();
   getNextZone();
 });
@@ -108,8 +112,11 @@ function handleInput() {
 
   if (inputStr === answerKey) {
     console.log('correct');
+    let scoreValue = parseInt(score.innerHTML) + 10;
+    score.innerHTML = scoreValue;
   } else if (inputStr !== '') {
-    console.log('incorrect')
+    console.log('incorrect');
+    lives.innerHTML--;
   }
 }
 
