@@ -2,10 +2,15 @@ import { zones } from './zones.js';
 
 const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
+// Game info
 const gameContainer = document.querySelector('.game-container');
 const round = document.getElementById('round');
 const lives = document.getElementById('lives');
 const score = document.getElementById('score');
+const hintContainer = document.getElementById('hint-container');
+const hint = document.getElementById('hint');
+const hintButton = document.getElementById('hint-button');
+// Zone info
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
@@ -28,6 +33,8 @@ function hideScoreScreen() {
 hideScoreScreen();
 
 start.addEventListener('click', startGame);
+
+hintButton.addEventListener('click', revealHint);
 
 submit.addEventListener('click', function () {
   handleInput();
@@ -55,6 +62,15 @@ function startGame() {
   zone = shuffledZones[currentZoneIndex];
 
   showZone(zone);
+}
+
+function revealHint() {
+  const hintText = document.createElement('p');
+
+  hintText.innerText = zone.hint;
+  hintContainer.appendChild(hintText);
+
+  hintButton.style.display = 'none';
 }
 
 function getNextZone() {
@@ -121,11 +137,16 @@ function handleInput() {
 }
 
 function reset() {
-  next.style.display = 'none';
   userInput = [];
+  next.style.display = 'none';
+  hintButton.style.display = 'block';
 
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
+  }
+  
+  while (hintContainer.firstChild) {
+    hintContainer.removeChild(hintContainer.firstChild);
   }
 }
 
