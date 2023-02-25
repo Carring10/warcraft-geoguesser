@@ -10,27 +10,24 @@ const score = document.getElementById('score');
 const hintContainer = document.getElementById('hint-container');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
+const gameOver = document.querySelector('.game-over');
 // Zone info
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
-const scoreScreen = document.querySelector('.score-screen');
+const leaderBoard = document.querySelector('.leaderboard');
 
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
 
-function hideGame() {
+function hideScreens() {
   gameContainer.style.display = 'none';
+  leaderBoard.style.display = 'none';
+  gameOver.style.display = 'none';
 }
 
-hideGame();
-
-function hideScoreScreen() {
-  scoreScreen.style.display = 'none';
-}
-
-hideScoreScreen();
+hideScreens();
 
 start.addEventListener('click', startGame);
 
@@ -65,6 +62,7 @@ function startGame() {
 }
 
 function revealHint() {
+  hint.innerHTML--;
   const hintText = document.createElement('p');
 
   hintText.innerText = zone.hint;
@@ -80,7 +78,7 @@ function getNextZone() {
   if (zone !== undefined) {
     showZone(zone);
   } else {
-    showScoreScreen();
+    showleaderBoard();
   }
 }
 
@@ -150,8 +148,8 @@ function reset() {
   }
 }
 
-function showScoreScreen() {
-  scoreScreen.style.display = 'block';
+function showleaderBoard() {
+  leaderBoard.style.display = 'block';
   gameContainer.style.display = 'none';
 
   fetch('http://localhost:3001/users')
@@ -166,8 +164,8 @@ function showScoreScreen() {
         userName.textContent = data.users[i].username;
         userScore.textContent = data.users[i].score;
 
-        scoreScreen.appendChild(userName);
-        scoreScreen.appendChild(userScore);
+        leaderBoard.appendChild(userName);
+        leaderBoard.appendChild(userScore);
       }
     });
 }
