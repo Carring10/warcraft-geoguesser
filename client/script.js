@@ -27,27 +27,11 @@ function hideScreens() {
   gameOverScreen.style.display = 'none';
 }
 
-hideScreens();
-
 start.addEventListener('click', startGame);
 
 hintButton.addEventListener('click', revealHint);
 
-submit.addEventListener('click', function () {
-  handleInput();
-  // To prevent user from moving on without attempting
-  userInput.forEach((character) => {
-    if (character !== '') {
-      next.style.display = 'block';
-    }
-  })
-
-  console.log(lives.innerText);
-
-  if (lives.innerText === '0') {
-    gameOver();
-  }
-});
+submit.addEventListener('click', handleInput);
 
 next.addEventListener('click', () => {
   round.innerHTML++;
@@ -138,6 +122,16 @@ function handleInput() {
     console.log('incorrect');
     lives.innerHTML--;
   }
+    // To prevent user from moving on without attempting
+    userInput.forEach((character) => {
+      if (character !== '') {
+        next.style.display = 'block';
+      }
+    })
+  
+    if (lives.innerText === '0') {
+      gameOver();
+    }
 }
 
 function reset() {
@@ -160,7 +154,7 @@ function gameOver() {
 
   const playAgain = document.getElementById('play-button');
 
-  playAgain.addEventListener('click', restartGame)
+  playAgain.addEventListener('click', restartGame);
 }
 
 function restartGame() {
@@ -169,10 +163,10 @@ function restartGame() {
   lives.innerHTML = '3';
   hint.innerHTML = '3';
   score.innerHTML = '0';
+
   reset();
   startGame();
 }
-
 
 function showleaderBoard() {
   leaderBoard.style.display = 'block';
@@ -195,3 +189,5 @@ function showleaderBoard() {
       }
     });
 }
+
+hideScreens();
