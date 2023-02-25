@@ -10,7 +10,7 @@ const score = document.getElementById('score');
 const hintContainer = document.getElementById('hint-container');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
-const gameOver = document.querySelector('.game-over');
+const gameOverScreen = document.querySelector('.game-over');
 // Zone info
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
@@ -24,7 +24,7 @@ let userInput = [];
 function hideScreens() {
   gameContainer.style.display = 'none';
   leaderBoard.style.display = 'none';
-  gameOver.style.display = 'none';
+  gameOverScreen.style.display = 'none';
 }
 
 hideScreens();
@@ -41,6 +41,12 @@ submit.addEventListener('click', function () {
       next.style.display = 'block';
     }
   })
+
+  console.log(lives.innerText);
+
+  if (lives.innerText === '0') {
+    gameOver();
+  }
 });
 
 next.addEventListener('click', () => {
@@ -142,11 +148,31 @@ function reset() {
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
   }
-  
+
   while (hintContainer.firstChild) {
     hintContainer.removeChild(hintContainer.firstChild);
   }
 }
+
+function gameOver() {
+  gameContainer.style.display = 'none';
+  gameOverScreen.style.display = 'block';
+
+  const playAgain = document.getElementById('play-button');
+
+  playAgain.addEventListener('click', restartGame)
+}
+
+function restartGame() {
+  gameOverScreen.style.display = 'none';
+  round.innerHTML = '1';
+  lives.innerHTML = '3';
+  hint.innerHTML = '3';
+  score.innerHTML = '0';
+  reset();
+  startGame();
+}
+
 
 function showleaderBoard() {
   leaderBoard.style.display = 'block';
