@@ -52,13 +52,13 @@ function startGame() {
 }
 
 function revealHint() {
+  hintButton.style.display = 'none';
   hint.innerHTML--;
+
   const hintText = document.createElement('p');
 
   hintText.innerText = zone.hint;
   hintContainer.appendChild(hintText);
-
-  hintButton.style.display = 'none';
 }
 
 function getNextZone() {
@@ -117,27 +117,35 @@ function handleInput() {
   if (inputStr === answerKey) {
     console.log('correct');
     let scoreValue = parseInt(score.innerHTML) + 10;
+
     score.innerHTML = scoreValue;
   } else if (inputStr !== '') {
     console.log('incorrect');
     lives.innerHTML--;
   }
-    // To prevent user from moving on without attempting
-    userInput.forEach((character) => {
-      if (character !== '') {
-        next.style.display = 'block';
-      }
-    })
-  
-    if (lives.innerText === '0') {
-      gameOver();
+  // To prevent user from moving on without attempting
+  userInput.forEach((character) => {
+    if (character !== '') {
+      next.style.display = 'block';
     }
+  })
+
+  if (lives.innerText === '0') {
+    gameOver();
+  }
+
+  localStorage.setItem('score', score.innerHTML);
+
 }
 
 function reset() {
   userInput = [];
   next.style.display = 'none';
   hintButton.style.display = 'block';
+
+  if (hint.innerHTML === '0') {
+    hintButton.style.display = 'none';
+  }
 
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
