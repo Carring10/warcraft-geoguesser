@@ -74,6 +74,8 @@ function getNextZone() {
 
 function showZone(zone) {
   zoneName.innerText = zone.name;
+  console.log(zone);
+  localStorage.setItem('zone', JSON.stringify(zone));
 
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
@@ -135,7 +137,9 @@ function handleInput() {
   }
 
   localStorage.setItem('score', score.innerHTML);
-
+  localStorage.setItem('lives', lives.innerHTML);
+  localStorage.setItem('hint', hint.innerHTML);
+  localStorage.setItem('score', score.innerHTML);
 }
 
 function reset() {
