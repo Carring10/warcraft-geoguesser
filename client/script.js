@@ -2,6 +2,7 @@ import { zones } from './zones.js';
 
 const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
+const lastSession = document.getElementById('last-session');
 // Game info
 const gameContainer = document.querySelector('.game-container');
 const round = document.getElementById('round');
@@ -21,13 +22,20 @@ const leaderBoard = document.querySelector('.leaderboard');
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
 
-function hideScreens() {
+function hideElements() {
   gameContainer.style.display = 'none';
   leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'none';
+  lastSession.style.display = 'none';
+
+  if (localStorage.getItem('lives')) {
+    lastSession.style.display = 'block';
+  }
 }
 
 start.addEventListener('click', startGame);
+
+lastSession.addEventListener('click', getLastSession);
 
 hintButton.addEventListener('click', revealHint);
 
@@ -49,6 +57,14 @@ function startGame() {
   zone = shuffledZones[currentZoneIndex];
 
   showZone(zone);
+}
+
+function getLastSession() {
+  const getLives = localStorage.getItem('lives');
+
+  if (getLives > 0) {
+    console.log(getLives);
+  }
 }
 
 function revealHint() {
@@ -202,4 +218,4 @@ function showleaderBoard() {
     });
 }
 
-hideScreens();
+hideElements();
