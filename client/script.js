@@ -12,6 +12,8 @@ const hintContainer = document.getElementById('hint-container');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
 const gameOverScreen = document.querySelector('.game-over');
+const recordButton = document.getElementById('record-button');
+const recordScreen = document.querySelector('.record-score');
 // Zone info
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
@@ -27,8 +29,9 @@ function hideElements() {
   leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'none';
   lastSession.style.display = 'none';
+  recordScreen.style.display = 'none';
 
-  if (localStorage.getItem('lives')) {
+  if (localStorage.getItem('lives') > 0) {
     lastSession.style.display = 'block';
   }
 }
@@ -46,6 +49,8 @@ next.addEventListener('click', () => {
   reset();
   getNextZone();
 });
+
+recordButton.addEventListener('click', recordScore);
 
 function startGame() {
   startScreen.style.display = 'none';
@@ -217,6 +222,11 @@ function restartGame() {
 
   reset();
   startGame();
+}
+
+function recordScore() {
+  recordScreen.style.display = 'block';
+  gameOverScreen.style.display = 'none';
 }
 
 function showleaderBoard() {
