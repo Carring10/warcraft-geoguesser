@@ -67,14 +67,22 @@ function getLastSession() {
   gameContainer.style.display = 'block';
   next.style.display = 'none';
 
+  const getRound = localStorage.getItem('round');
   const getLives = localStorage.getItem('lives');
+  const getHint = localStorage.getItem('hint');
+  const getScore = localStorage.getItem('score');
   const getZones = JSON.parse(localStorage.getItem('shuffledZones'));
+
+  round.innerHTML = getRound;
+  lives.innerHTML = getLives;
+  hint.innerHTML = getHint;
+  score.innerHTML = getScore;
 
   currentZoneIndex = localStorage.getItem('index');
   shuffledZones = getZones;
 
   zone = getZones[currentZoneIndex];
-  
+
   showZone(zone);
 
   if (getLives > 0) {
@@ -167,7 +175,7 @@ function handleInput() {
     gameOver();
   }
 
-  localStorage.setItem('score', score.innerHTML);
+  localStorage.setItem('round', round.innerHTML);
   localStorage.setItem('lives', lives.innerHTML);
   localStorage.setItem('hint', hint.innerHTML);
   localStorage.setItem('score', score.innerHTML);
