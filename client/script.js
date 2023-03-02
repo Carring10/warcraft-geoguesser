@@ -56,11 +56,26 @@ function startGame() {
   currentZoneIndex = 0
   zone = shuffledZones[currentZoneIndex];
 
+  localStorage.setItem('shuffledZones', JSON.stringify(shuffledZones));
+
   showZone(zone);
 }
 
+
 function getLastSession() {
+  startScreen.style.display = 'none';
+  gameContainer.style.display = 'block';
+  next.style.display = 'none';
+
   const getLives = localStorage.getItem('lives');
+  const getZones = JSON.parse(localStorage.getItem('shuffledZones'));
+
+  currentZoneIndex = localStorage.getItem('index');
+  shuffledZones = getZones;
+
+  zone = getZones[currentZoneIndex];
+  
+  showZone(zone);
 
   if (getLives > 0) {
     console.log(getLives);
@@ -78,6 +93,7 @@ function revealHint() {
 }
 
 function getNextZone() {
+  console.log(shuffledZones)
   currentZoneIndex++
   zone = shuffledZones[currentZoneIndex];
 
@@ -90,8 +106,7 @@ function getNextZone() {
 
 function showZone(zone) {
   zoneName.innerText = zone.name;
-  console.log(zone);
-  localStorage.setItem('zone', JSON.stringify(zone));
+  localStorage.setItem('index', currentZoneIndex);
 
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
