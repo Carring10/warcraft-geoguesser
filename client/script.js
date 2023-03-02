@@ -208,7 +208,15 @@ function gameOver() {
   gameContainer.style.display = 'none';
   gameOverScreen.style.display = 'block';
 
+  const stats = document.getElementById('stats');
+  const statMessage = document.createElement('p');
   const playAgain = document.getElementById('play-button');
+  const userRounds = localStorage.getItem('round');
+  const userScore = localStorage.getItem('score');
+
+  stats.appendChild(statMessage);
+
+  statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore + ".";
 
   playAgain.addEventListener('click', restartGame);
 }
