@@ -235,6 +235,29 @@ function restartGame() {
 function recordScore() {
   recordScreen.style.display = 'block';
   gameOverScreen.style.display = 'none';
+
+  const saveButton = document.getElementById('save-button');
+  const usernameInput = document.getElementById('username-input');
+
+  const score = parseInt(localStorage.getItem('score'));
+  
+  saveButton.addEventListener('click', function () {
+    const username = usernameInput.value.trim();
+    console.log(score)
+
+    fetch('http://localhost:3001/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, score }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('success!:', data);
+    })
+    .catch((error) => {
+      console.log('error:', error);
+    })
+  })
 }
 
 function showleaderBoard() {
