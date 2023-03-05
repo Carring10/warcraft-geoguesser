@@ -16,15 +16,11 @@ class User {
     let sql = `
     INSERT INTO users(
       username,
-      score,
-      lives,
-      hints
+      score
     )
     VALUES(
       '${this.username}',
       '${this.score}',
-      '3',
-      '3'
     )
     `;
 
@@ -32,12 +28,21 @@ class User {
 
     return newUser;
   }
-  // Update user's score
+
   static updateScore(username, score) {
     let sql = `
     UPDATE users
     SET score = ${score} 
     WHERE username = '${username}'; 
+    `;
+
+    return db.execute(sql);
+  }
+
+  static delete(id) {
+    let sql = `
+    DELETE FROM users
+    WHERE id = ${id};
     `;
 
     return db.execute(sql);

@@ -106,7 +106,6 @@ function revealHint() {
 }
 
 function getNextZone() {
-  console.log(shuffledZones)
   currentZoneIndex++
   zone = shuffledZones[currentZoneIndex];
 
@@ -239,11 +238,9 @@ function recordScore() {
   const saveButton = document.getElementById('save-button');
   const usernameInput = document.getElementById('username-input');
 
-  const score = parseInt(localStorage.getItem('score'));
-  
   saveButton.addEventListener('click', function () {
     const username = usernameInput.value.trim();
-    console.log(score)
+    const score = parseInt(localStorage.getItem('score'));
 
     fetch('http://localhost:3001/users', {
       method: 'POST',
@@ -257,7 +254,7 @@ function recordScore() {
     .catch((error) => {
       console.log('error:', error);
     })
-  })
+  });
 }
 
 function showleaderBoard() {

@@ -36,3 +36,15 @@ exports.updateScore = async (req, res) => {
     console.log(err)
   }
 }
+
+exports.delete = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    await User.delete(id);
+
+    res.status(200).json({ message: "User deleted!" });
+  } catch (err) {
+    console.log(err);
+  }
+}
