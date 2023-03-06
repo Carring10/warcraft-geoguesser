@@ -236,26 +236,32 @@ function recordScore() {
   gameOverScreen.style.display = 'none';
 
   const saveButton = document.getElementById('save-button');
+
+  saveButton.addEventListener('click', submitScore);
+}
+
+function submitScore() {
   const usernameInput = document.getElementById('username-input');
+  const username = usernameInput.value.trim();
+  const score = parseInt(localStorage.getItem('score'));
 
-  saveButton.addEventListener('click', function () {
-    const username = usernameInput.value.trim();
-    const score = parseInt(localStorage.getItem('score'));
+  console.log('username', username)
+  console.log('score', score)
 
-    fetch('http://localhost:3001/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, score }),
-    })
+  fetch('http://localhost:3001/users', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, score }),
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log('success!:', data);
     })
     .catch((error) => {
       console.log('error:', error);
-    })
-  });
+    });
 }
+
 
 function showleaderBoard() {
   leaderBoard.style.display = 'block';

@@ -20,7 +20,7 @@ class User {
     )
     VALUES(
       '${this.username}',
-      '${this.score}',
+      '${this.score}'
     )
     `;
 
