@@ -253,7 +253,18 @@ function submitScore() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, score }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.ok) {
+        recordScreen.style.display = 'none';
+
+        const successMessage = document.createElement('h2');
+        leaderBoard.appendChild(successMessage);
+        successMessage.innerText = "Success! Your score has been submitted to the leaderboard."
+
+        showleaderBoard();
+      }
+      return response.json();
+    })
     .then((data) => {
       console.log('success!:', data);
     })
@@ -282,6 +293,9 @@ function showleaderBoard() {
         leaderBoard.appendChild(userName);
         leaderBoard.appendChild(userScore);
       }
+    })
+    .catch((error) => {
+      console.log('error:', error);
     });
 }
 
