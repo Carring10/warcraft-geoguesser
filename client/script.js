@@ -245,9 +245,6 @@ function submitScore() {
   const username = usernameInput.value.trim();
   const score = parseInt(localStorage.getItem('score'));
 
-  console.log('username', username)
-  console.log('score', score)
-
   fetch('http://localhost:3001/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -277,6 +274,20 @@ function submitScore() {
 function showleaderBoard() {
   leaderBoard.style.display = 'block';
   gameContainer.style.display = 'none';
+
+  const homeScreen = document.getElementById('home-screen');
+
+  homeScreen.addEventListener('click', function() {
+    leaderBoard.style.display = 'none';
+    startScreen.style.display = 'block';
+
+    round.innerHTML = '1';
+    lives.innerHTML = '3';
+    hint.innerHTML = '3';
+    score.innerHTML = '0';
+  
+    reset();
+  })
 
   fetch('http://localhost:3001/users')
     .then(function (response) {
