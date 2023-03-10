@@ -236,8 +236,14 @@ function recordScore() {
   gameOverScreen.style.display = 'none';
 
   const saveButton = document.getElementById('save-button');
+  const cancel = document.getElementById('cancel');
 
   saveButton.addEventListener('click', submitScore);
+
+  cancel.addEventListener('click', function () {
+    recordScreen.style.display = 'none';
+    gameOverScreen.style.display = 'block';
+  });
 }
 
 function submitScore() {
