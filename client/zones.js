@@ -89,5 +89,46 @@ export const zones = [
     name: 'Tanaris',
     img: 'placeholder',
     hint: "In this zone, players can buy Noggenfogger Elixir, an unpredictable transformation elixir, from Marin Noggenfogger."
-  }
+  },
+  // Eastern Kingdoms
+  {
+    name: 'Tirisfal Glades',
+    img: 'placeholder',
+    hint: "The capital city of the Forsaken, Undercity, is located here."
+  },
+  {
+    name: 'Western Plaguelands',
+    img: 'placeholder',
+    hint: "This zone is home to the Scholomance instance."
+  },
+  {
+    name: 'Eastern Plaguelands',
+    img: 'placeholder',
+    hint: "The Argent Dawn maintains a small camp in Light Hope's Chapel, the only fully friendly settlement in the area."
+  },
+  {
+    name: 'The Hinterlands',
+    img: 'placeholder',
+    hint: "This is a grassy mountainous zone in northern Eastern Kingdoms."
+  },
+  {
+    name: 'Alterac Mountains',
+    img: 'placeholder',
+    hint: "Residing here is Dalaran, a mage city controlled by the Kirin Tor."
+  },
+  {
+    name: 'Silverpine Forest',
+    img: 'placeholder',
+    hint: "Home to the dungeon, Shadowfang Keep."
+  },
+  {
+    name: 'Hillsbrad Foothills',
+    img: 'placeholder',
+    hint: "This zone, covered in grassy hills and plenty of wildlife, is one of the only locations of Lordaeron that was left untouched by the Scourge."
+  },
+  {
+    name: 'Arathi Highlands',
+    img: 'placeholder',
+    hint: "Stromgarde, the former capital of the kingdom of Arathor, has fallen in disrepair."
+  },
 ];

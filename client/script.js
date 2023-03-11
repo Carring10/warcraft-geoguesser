@@ -123,6 +123,12 @@ function showZone(zone) {
   zoneName.innerText = zone.name;
   localStorage.setItem('index', currentZoneIndex);
 
+  if (zone.name.includes(' ')) {
+    console.log('space');
+    const splitString = zone.name.replaceAll(' ', '');
+    console.log(splitString);
+  }
+  
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
 
@@ -133,6 +139,7 @@ function showZone(zone) {
   }
   // Auto focus the next input field
   inputFields.firstElementChild.focus();
+  
   for (let input of inputFields.children) {
     input.oninput = function () {
       if (input.firstElementChild) {
@@ -309,7 +316,7 @@ function showleaderBoard() {
         const user = data.users[i].username;
         const score = data.users[i].score;
 
-        users.push({'username': user, 'score': score});
+        users.push({ 'username': user, 'score': score });
       }
       
       users.sort((a, b) => b.score - a.score);
