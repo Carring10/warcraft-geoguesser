@@ -279,7 +279,6 @@ function submitScore() {
     });
 }
 
-
 function showleaderBoard() {
   leaderBoard.style.display = 'block';
   gameContainer.style.display = 'none';
