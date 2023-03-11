@@ -20,6 +20,7 @@ const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
 const leaderBoard = document.querySelector('.leaderboard');
+const showLeaderBoard = document.getElementById('show-leaderboard');
 
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
@@ -43,6 +44,8 @@ lastSession.addEventListener('click', getLastSession);
 hintButton.addEventListener('click', revealHint);
 
 submit.addEventListener('click', handleInput);
+
+showLeaderBoard.addEventListener('click', showleaderBoard);
 
 next.addEventListener('click', () => {
   round.innerHTML++;
@@ -283,7 +286,7 @@ function showleaderBoard() {
 
   const homeScreen = document.getElementById('home-screen');
 
-  homeScreen.addEventListener('click', function() {
+  homeScreen.addEventListener('click', function () {
     leaderBoard.style.display = 'none';
     startScreen.style.display = 'block';
 
@@ -291,7 +294,7 @@ function showleaderBoard() {
     lives.innerHTML = '3';
     hint.innerHTML = '3';
     score.innerHTML = '0';
-  
+
     reset();
   })
 
@@ -300,16 +303,28 @@ function showleaderBoard() {
       return response.json();
     })
     .then(function (data) {
-      for (let i = 0; i < data.users.length; i++) {
+      // sort user's scores into descending order
+      let users = [];
+
+      for (let i = 0; i < data.users.length; i++) {  
+        const user = data.users[i].username;
+        const score = data.users[i].score;
+
+        users.push({'username': user, 'score': score});
+      }
+      
+      users.sort((a, b) => b.score - a.score);
+
+      users.forEach((user) => {
         const userName = document.createElement('h2');
         const userScore = document.createElement('p');
 
-        userName.textContent = data.users[i].username;
-        userScore.textContent = data.users[i].score;
+        userName.textContent = user.username;
+        userScore.textContent = user.score;
 
         leaderBoard.appendChild(userName);
         leaderBoard.appendChild(userScore);
-      }
+      });
     })
     .catch((error) => {
       console.log('error:', error);
