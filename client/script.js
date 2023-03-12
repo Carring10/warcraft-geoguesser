@@ -123,27 +123,31 @@ function showZone(zone) {
   zoneName.innerText = zone.name;
   localStorage.setItem('index', currentZoneIndex);
 
-  if (zone.name.includes(' ')) {
-    console.log('space');
-    const splitString = zone.name.replaceAll(' ', '');
-    console.log(splitString);
-  }
   
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
+    const gap = document.createElement('div');
 
     inputFields.appendChild(input);
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', '1');
     input.setAttribute('id', 'input');
+
+    if (zone.name.includes(' ')) {
+      const indexOfSpace = zone.name.indexOf(' ');
+      const space = inputFields.children[indexOfSpace];
+
+      if (space != undefined) {
+        space.replaceWith(gap);
+        space.style.margin = '10px';
+      }
+    }
   }
   // Auto focus the next input field
   inputFields.firstElementChild.focus();
-  
+
   for (let input of inputFields.children) {
     input.oninput = function () {
-      if (input.firstElementChild) {
-      }
       if (input.nextElementSibling && input.value.length === 1) {
         input.nextElementSibling.focus();
       }
@@ -167,7 +171,7 @@ function handleInput() {
   });
   // Check user's answer
   const inputStr = userInput.toString().replaceAll(',', '').toLowerCase();
-  const answerKey = zone.name.toLowerCase();
+  const answerKey = zone.name.toLowerCase().replaceAll(' ', '');
 
   if (inputStr === answerKey) {
     console.log('correct');
