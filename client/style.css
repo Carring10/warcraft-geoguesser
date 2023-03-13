@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#start-button {
+  width: 20%;
+  cursor: pointer;
+}
+
+#last-session {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

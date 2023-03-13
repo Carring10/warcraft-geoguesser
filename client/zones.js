@@ -199,6 +199,6 @@ export const zones = [
   {
     name: 'Stranglethorn Vale',
     img: 'placeholder',
-    hint: "This zone is home to many events: Every 3 hours, an all-out PvP event is hosted in the Gurubashi Arena, and every sunday, there is a fishing contest in Booty Bay!"
+    hint: "This zone is home to many events: Every 3 hours, an all-out PvP event is hosted in the Gurubashi Arena, and every Sunday, there is a fishing contest in Booty Bay!"
   },
 ];
