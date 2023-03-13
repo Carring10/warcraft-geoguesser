@@ -123,7 +123,7 @@ function showZone(zone) {
   zoneName.innerText = zone.name;
   localStorage.setItem('index', currentZoneIndex);
 
-  
+
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
     const gap = document.createElement('div');
@@ -150,14 +150,23 @@ function showZone(zone) {
     input.oninput = function () {
       if (input.nextElementSibling && input.value.length === 1) {
         input.nextElementSibling.focus();
+        // Skip over div to focus next input element
+        if (input.nextElementSibling.nodeName == 'DIV') {
+          input.nextElementSibling.nextElementSibling.focus();
+        }
       }
     }
     // When backspacing, focus the previous input field
     input.onkeydown = function (event) {
       const key = event.key;
       if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
-        event.target.value = '';
         input.previousElementSibling.focus();
+        inputFields.lastElementChild.value = '';
+
+        // Skip over div to focus previous input element
+        if (input.previousElementSibling.nodeName == 'DIV') {
+          input.previousElementSibling.previousElementSibling.focus();
+        }
       }
     }
   }
@@ -316,13 +325,13 @@ function showleaderBoard() {
       // sort user's scores into descending order
       let users = [];
 
-      for (let i = 0; i < data.users.length; i++) {  
+      for (let i = 0; i < data.users.length; i++) {
         const user = data.users[i].username;
         const score = data.users[i].score;
 
         users.push({ 'username': user, 'score': score });
       }
-      
+
       users.sort((a, b) => b.score - a.score);
 
       users.forEach((user) => {
