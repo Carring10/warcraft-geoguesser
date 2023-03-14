@@ -8,7 +8,7 @@ const gameContainer = document.querySelector('.game-container');
 const round = document.getElementById('round');
 const lives = document.getElementById('lives');
 const score = document.getElementById('score');
-const hintContainer = document.getElementById('hint-container');
+const hintMessage = document.getElementById('hint-message');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
 const gameOverScreen = document.querySelector('.game-over');
@@ -44,8 +44,6 @@ lastSession.addEventListener('click', getLastSession);
 hintButton.addEventListener('click', revealHint);
 
 submit.addEventListener('click', handleInput);
-
-showLeaderBoard.addEventListener('click', showleaderBoard);
 
 next.addEventListener('click', () => {
   round.innerHTML++;
@@ -105,7 +103,7 @@ function revealHint() {
   const hintText = document.createElement('p');
 
   hintText.innerText = zone.hint;
-  hintContainer.appendChild(hintText);
+  hintMessage.appendChild(hintText);
 }
 
 function getNextZone() {
@@ -221,8 +219,8 @@ function reset() {
     inputFields.removeChild(inputFields.firstChild);
   }
 
-  while (hintContainer.firstChild) {
-    hintContainer.removeChild(hintContainer.firstChild);
+  while (hintMessage.firstChild) {
+    hintMessage.removeChild(hintMessage.firstChild);
   }
 }
 
