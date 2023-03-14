@@ -124,21 +124,32 @@ function showZone(zone) {
 
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
-    const gap = document.createElement('div');
 
     inputFields.appendChild(input);
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', '1');
     input.setAttribute('id', 'input');
+  }
 
-    if (zone.name.includes(' ')) {
-      const indexOfSpace = zone.name.indexOf(' ');
-      const space = inputFields.children[indexOfSpace];
+  
+  if (zone.name.includes(' ')) {
+    const gap = document.createElement('div');
+    const indexOfSpace = zone.name.indexOf(' ');
+    const space = inputFields.children[indexOfSpace];
 
-      if (space != undefined) {
-        space.replaceWith(gap);
-        space.style.margin = '10px';
-      }
+    if (space != undefined) {
+      space.replaceWith(gap);
+      gap.style.margin = '5px';
+    }
+  }
+
+  if (zone.name === 'Swamp of Sorrows') {
+    const secondSpace = inputFields.children[8];
+    const secondGap = document.createElement('div');
+    
+    if (secondSpace != undefined) {
+      secondSpace.replaceWith(secondGap);
+      secondGap.style.margin = '5px';
     }
   }
   // Auto focus the next input field
