@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,10 @@
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
+
 <body>
   <div class="start-screen">
-  <h1 class="title">Warcraft Geoguesser</h1>
+    <h1 class="title">Warcraft Geoguesser</h1>
     <p>How well do you know the classic zones of Azeroth?</p>
     <button id="start-button">Start</button>
     <button id="last-session">Continue last session?</button>
@@ -37,10 +39,14 @@
   </div>
   <div class="game-over">
     <h2>You ran out of lives...</h2>
-    <div id="stats"></div>
-    <button id="play-button">Play Again?</button>
-    <p>Or</p>
-    <button id="record-button">Record Score</button>
+    <div class="death-container">
+      <div id="stats"></div>
+      <div class="options">
+        <button id="play-button">Play Again?</button>
+        <p>Or</p>
+        <button id="record-button">Record Score</button>
+      </div>
+    </div>
   </div>
   <div class="record-score">
     <h2>Enter a username</h2>
@@ -54,4 +60,5 @@
   </div>
   <script type="module" src="./script.js"></script>
 </body>
+
 </html>
