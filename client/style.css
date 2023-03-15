@@ -1,12 +1,21 @@
 html, body {
   margin: 0;
   height: 100%;
+  overflow-y: hidden;
 }
 
 :root {
   --main-color: #710200;
   --border-color: #483f44;
   --font-color: #b49901;
+}
+
+.bg-img {
+  height: 100%;
+  background-image: url('images/azeroth.webp');
+  background-size: cover;
+  filter: blur(3px);
+  box-shadow: inset 0 0 0 2000px rgba(255, 254, 254, 0.13);
 }
 
 .title {
@@ -22,6 +31,14 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
+  width: 80%;
+  padding: 20px;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .start-screen p {
