@@ -24,6 +24,11 @@ html, body {
   text-align: center;
 }
 
+.start-screen p {
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+}
+
 #start-button {
   width: 200px;
   cursor: pointer;
@@ -116,4 +121,11 @@ html, body {
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+
+.record-score {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
