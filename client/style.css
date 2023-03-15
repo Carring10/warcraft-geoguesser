@@ -52,6 +52,7 @@ html, body {
 .start-screen p {
   font-family: 'Cinzel', serif;
   font-size: 30px;
+  font-weight: bold;
   top: 38%;
   position: absolute;
 }
@@ -65,6 +66,12 @@ html, body {
   color: var(--font-color);
   font-size: 20px;
   margin: 50px;
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#start-button:hover {
+  background-color: red;
 }
 
 #last-session {
