@@ -1,5 +1,6 @@
 import { zones } from './zones.js';
 
+const bgImg = document.querySelector('.bg-img');
 const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
 const lastSession = document.getElementById('last-session');
@@ -55,6 +56,7 @@ recordButton.addEventListener('click', recordScore);
 
 function startGame() {
   startScreen.style.display = 'none';
+  bgImg.style.display = 'none';
   gameContainer.style.display = 'block';
   next.style.display = 'none';
 
@@ -70,6 +72,7 @@ function startGame() {
 
 function getLastSession() {
   startScreen.style.display = 'none';
+  bgImg.style.display = 'none';
   gameContainer.style.display = 'block';
   next.style.display = 'none';
 
@@ -317,6 +320,7 @@ function showleaderBoard() {
   homeScreen.addEventListener('click', function () {
     leaderBoard.style.display = 'none';
     startScreen.style.display = 'block';
+    bgImg.style.display = 'block';
 
     round.innerHTML = '1';
     lives.innerHTML = '3';
