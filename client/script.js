@@ -56,7 +56,6 @@ recordButton.addEventListener('click', recordScore);
 
 function startGame() {
   startScreen.style.display = 'none';
-  bgImg.style.display = 'none';
   gameContainer.style.display = 'block';
   next.style.display = 'none';
 
@@ -72,7 +71,6 @@ function startGame() {
 
 function getLastSession() {
   startScreen.style.display = 'none';
-  bgImg.style.display = 'none';
   gameContainer.style.display = 'block';
   next.style.display = 'none';
 
