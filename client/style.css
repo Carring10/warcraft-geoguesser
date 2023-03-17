@@ -8,6 +8,7 @@ html, body {
   --main-color: #710200;
   --border-color: #483f44;
   --font-color: #b49901;
+  --font: 'Cinzel', serif;
 }
 
 .bg-img {
@@ -26,6 +27,9 @@ html, body {
   height: 100%;
   width: 80%;
   padding: 20px;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
   z-index: 2;
 }
@@ -47,7 +51,7 @@ html, body {
 
 
 .start-screen p {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font);
   font-size: 30px;
   font-weight: bold;
   top: 38%;
@@ -55,7 +59,7 @@ html, body {
 }
 
 #start-button {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font);;
   font-weight: bold;
   font-size: 20px;
   width: 200px;
@@ -74,7 +78,7 @@ html, body {
 }
 
 #last-session {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font);;
   font-weight: bold;
   font-size: 15px;
   margin: 15px;
@@ -97,6 +101,9 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  font-family: var(--font);
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .game-info {
@@ -121,6 +128,18 @@ html, body {
   width: 20px;
   padding: 5px;
   margin: 2px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #0000007e;
+  color: white;
+  font-family: var(--font);
+  font-weight: bold;
+  text-align: center;
+}
+
+#input:focus {
+  outline: none;
+  border: 2px solid black;
 }
 
 .button-container {
