@@ -5,6 +5,7 @@ const startScreen = document.querySelector('.start-screen');
 const start = document.getElementById('start-button');
 const lastSession = document.getElementById('last-session');
 // Game info
+const gameStats = document.querySelector('.game-info');
 const gameContainer = document.querySelector('.game-container');
 const round = document.getElementById('round');
 const lives = document.getElementById('lives');
@@ -28,13 +29,14 @@ let userInput = [];
 
 function hideElements() {
   gameContainer.style.display = 'none';
+  gameStats.style.display = 'none';
   leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'none';
   lastSession.style.display = 'none';
   recordScreen.style.display = 'none';
 
   if (localStorage.getItem('lives') > 0) {
-    lastSession.style.display = 'block';
+    lastSession.style.display = 'flex';
   }
 }
 
@@ -56,7 +58,8 @@ recordButton.addEventListener('click', recordScore);
 
 function startGame() {
   startScreen.style.display = 'none';
-  gameContainer.style.display = 'block';
+  gameContainer.style.display = 'flex';
+  gameStats.style.display = 'flex';
   next.style.display = 'none';
 
   shuffledZones = [...zones].sort(() => 0.5 - Math.random());
@@ -71,7 +74,8 @@ function startGame() {
 
 function getLastSession() {
   startScreen.style.display = 'none';
-  gameContainer.style.display = 'block';
+  gameContainer.style.display = 'flex';
+  gameStats.style.display = 'flex';
   next.style.display = 'none';
 
   const getRound = localStorage.getItem('round');
@@ -204,7 +208,7 @@ function handleInput() {
   // To prevent user from moving on without attempting
   userInput.forEach((character) => {
     if (character !== '') {
-      next.style.display = 'block';
+      next.style.display = 'flex';
     }
   })
 
@@ -221,7 +225,7 @@ function handleInput() {
 function reset() {
   userInput = [];
   next.style.display = 'none';
-  hintButton.style.display = 'block';
+  hintButton.style.display = 'flex';
 
   if (hint.innerHTML === '0') {
     hintButton.style.display = 'none';
@@ -238,7 +242,8 @@ function reset() {
 
 function gameOver() {
   gameContainer.style.display = 'none';
-  gameOverScreen.style.display = 'block';
+  gameStats.style.display = 'none';
+  gameOverScreen.style.display = 'flex';
 
   const stats = document.getElementById('stats');
   const statMessage = document.createElement('p');
@@ -265,7 +270,7 @@ function restartGame() {
 }
 
 function recordScore() {
-  recordScreen.style.display = 'block';
+  recordScreen.style.display = 'flex';
   gameOverScreen.style.display = 'none';
 
   const saveButton = document.getElementById('save-button');
@@ -275,7 +280,7 @@ function recordScore() {
 
   cancel.addEventListener('click', function () {
     recordScreen.style.display = 'none';
-    gameOverScreen.style.display = 'block';
+    gameOverScreen.style.display = 'flex';
   });
 }
 
@@ -310,15 +315,16 @@ function submitScore() {
 }
 
 function showleaderBoard() {
-  leaderBoard.style.display = 'block';
+  leaderBoard.style.display = 'flex';
   gameContainer.style.display = 'none';
+  gameStats.style.display = 'none';
 
   const homeScreen = document.getElementById('home-screen');
 
   homeScreen.addEventListener('click', function () {
     leaderBoard.style.display = 'none';
-    startScreen.style.display = 'block';
-    bgImg.style.display = 'block';
+    startScreen.style.display = 'flex';
+    bgImg.style.display = 'flex';
 
     round.innerHTML = '1';
     lives.innerHTML = '3';
