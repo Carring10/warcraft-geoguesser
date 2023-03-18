@@ -17,6 +17,7 @@ const gameOverScreen = document.querySelector('.game-over');
 const recordButton = document.getElementById('record-button');
 const recordScreen = document.querySelector('.record-score');
 // Zone info
+const zoneImg = document.getElementById('zone-screenshot');
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
@@ -123,7 +124,9 @@ function getNextZone() {
 }
 
 function showZone(zone) {
+  zoneImg.setAttribute('src', zone.img);
   zoneName.innerText = zone.name;
+
   localStorage.setItem('index', currentZoneIndex);
 
 
