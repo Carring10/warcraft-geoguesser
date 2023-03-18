@@ -134,6 +134,12 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#hint-button:hover {
+  background-color: red;
 }
 
 .zone-container {
@@ -188,6 +194,12 @@ html, body {
   border-radius: 5px;
   color: var(--font-color);
   font-size: 20px;
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#submit:hover {
+  background-color: red;
 }
 
 #next {
