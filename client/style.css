@@ -120,11 +120,13 @@ html, body {
   font-family: var(--font);
   font-weight: bold;
   font-size: 20px;
+  width: 90%;
 }
 
 
 .hint-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 }
@@ -137,10 +139,22 @@ html, body {
   color: var(--font-color);
   box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
   transition: 0.3s;
+  padding: 3px;
+  width: 100px;
+  text-align: center;
 }
 
 #hint-button:hover {
   background-color: red;
+}
+
+#hint-message {
+  width: 100%;
+}
+
+#hint-message p {
+  margin: 0px;
+  font-size: 20px;
 }
 
 .zone-container {
@@ -201,6 +215,7 @@ html, body {
   color: var(--font-color);
   font-size: 20px;
   box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  padding: 2px;
   transition: 0.3s;
 }
 
