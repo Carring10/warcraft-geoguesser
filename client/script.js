@@ -191,7 +191,6 @@ function showZone(zone) {
 
 function handleInput() {
   const inputs = document.querySelectorAll('#input');
-  const inputBox = document.getElementById('input')
 
   inputs.forEach((input) => {
     userInput.push(input.value);
@@ -205,6 +204,7 @@ function handleInput() {
       input.style.border = '2px solid green'
       input.style.backgroundColor = '#005707a1'
     });
+
     let scoreValue = parseInt(score.innerHTML) + 10;
 
     score.innerHTML = scoreValue;
@@ -213,6 +213,7 @@ function handleInput() {
       input.style.border = '2px solid red'
       input.style.backgroundColor = '#570000a1'
     });
+
     lives.innerHTML--;
   }
   // To prevent user from moving on without attempting
@@ -230,12 +231,15 @@ function handleInput() {
   localStorage.setItem('lives', lives.innerHTML);
   localStorage.setItem('hint', hint.innerHTML);
   localStorage.setItem('score', score.innerHTML);
+
+  submit.replaceWith(next);
 }
 
 function reset() {
   userInput = [];
-  next.style.display = 'none';
+  // next.style.display = 'none';
   hintButton.style.display = 'flex';
+  next.replaceWith(submit);
 
   if (hint.innerHTML === '0') {
     hintButton.style.display = 'none';

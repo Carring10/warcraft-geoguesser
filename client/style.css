@@ -112,7 +112,6 @@ html, body {
 .game-container {
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -190,7 +189,7 @@ html, body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 50px;
+  gap: 10px;
 }
 
 #submit {
