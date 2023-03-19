@@ -96,10 +96,6 @@ function getLastSession() {
   zone = getZones[currentZoneIndex];
 
   showZone(zone);
-
-  if (getLives > 0) {
-    console.log(getLives);
-  }
 }
 
 function revealHint() {

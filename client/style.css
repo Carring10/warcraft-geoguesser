@@ -217,6 +217,12 @@ html, body {
   border-radius: 5px;
   color: var(--font-color);
   font-size: 20px;
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#next:hover {
+  background-color: red;
 }
 
 .game-over {
