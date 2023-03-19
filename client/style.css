@@ -132,6 +132,7 @@ html, body {
 }
 
 #hint-button {
+  justify-content: center;
   cursor: pointer;
   background-color: var(--main-color);
   border: 3px solid var(--border-color);
@@ -141,7 +142,6 @@ html, body {
   transition: 0.3s;
   padding: 3px;
   width: 100px;
-  text-align: center;
 }
 
 #hint-button:hover {
