@@ -157,6 +157,11 @@ html, body {
   box-shadow: rgba(0, 0, 0, 0.651) 0px 2px 4px 0px, rgba(0, 0, 0, 0.651) 0px 2px 16px 0px;;
 }
 
+#zone-name {
+  position: absolute;
+  top: 30%;
+}
+
 #input-fields {
   display: flex;
   justify-content: center;

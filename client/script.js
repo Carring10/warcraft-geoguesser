@@ -191,6 +191,7 @@ function showZone(zone) {
 
 function handleInput() {
   const inputs = document.querySelectorAll('#input');
+  const inputBox = document.getElementById('input')
 
   inputs.forEach((input) => {
     userInput.push(input.value);
@@ -200,12 +201,18 @@ function handleInput() {
   const answerKey = zone.name.toLowerCase().replaceAll(' ', '');
 
   if (inputStr === answerKey) {
-    console.log('correct');
+    inputs.forEach((input) => {
+      input.style.border = '2px solid green'
+      input.style.backgroundColor = '#005707a1'
+    });
     let scoreValue = parseInt(score.innerHTML) + 10;
 
     score.innerHTML = scoreValue;
   } else if (inputStr !== '') {
-    console.log('incorrect');
+    inputs.forEach((input) => {
+      input.style.border = '2px solid red'
+      input.style.backgroundColor = '#570000a1'
+    });
     lives.innerHTML--;
   }
   // To prevent user from moving on without attempting
