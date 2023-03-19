@@ -241,7 +241,15 @@ html, body {
 }
 
 .game-over {
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
   height: 100%;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game-over h2 {
