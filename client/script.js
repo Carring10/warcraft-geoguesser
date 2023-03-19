@@ -135,7 +135,7 @@ function showZone(zone) {
     input.setAttribute('id', 'input');
   }
 
-  
+
   if (zone.name.includes(' ')) {
     const gap = document.createElement('div');
     const indexOfSpace = zone.name.indexOf(' ');
@@ -150,7 +150,7 @@ function showZone(zone) {
   if (zone.name === 'Swamp of Sorrows') {
     const secondSpace = inputFields.children[8];
     const secondGap = document.createElement('div');
-    
+
     if (secondSpace != undefined) {
       secondSpace.replaceWith(secondGap);
       secondGap.style.margin = '5px';
@@ -216,6 +216,7 @@ function handleInput() {
   userInput.forEach((character) => {
     if (character !== '') {
       next.style.display = 'flex';
+      submit.replaceWith(next);
     }
   })
 
@@ -227,13 +228,10 @@ function handleInput() {
   localStorage.setItem('lives', lives.innerHTML);
   localStorage.setItem('hint', hint.innerHTML);
   localStorage.setItem('score', score.innerHTML);
-
-  submit.replaceWith(next);
 }
 
 function reset() {
   userInput = [];
-  // next.style.display = 'none';
   hintButton.style.display = 'flex';
   next.replaceWith(submit);
 
