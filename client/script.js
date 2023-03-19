@@ -13,6 +13,7 @@ const score = document.getElementById('score');
 const hintMessage = document.getElementById('hint-message');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
+const spiritHealerBgImg = document.querySelector('.bg-img-game-over');
 const gameOverScreen = document.querySelector('.game-over');
 const recordButton = document.getElementById('record-button');
 const recordScreen = document.querySelector('.record-score');
@@ -33,6 +34,7 @@ function hideElements() {
   gameStats.style.display = 'none';
   leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'none';
+  spiritHealerBgImg.style.display = 'none';
   lastSession.style.display = 'none';
   recordScreen.style.display = 'none';
 
@@ -251,7 +253,9 @@ function reset() {
 function gameOver() {
   gameContainer.style.display = 'none';
   gameStats.style.display = 'none';
+  bgImg.style.display = 'none';
   gameOverScreen.style.display = 'flex';
+  spiritHealerBgImg.style.display = 'flex'
 
   const stats = document.getElementById('stats');
   const statMessage = document.createElement('p');
@@ -268,6 +272,7 @@ function gameOver() {
 
 function restartGame() {
   gameOverScreen.style.display = 'none';
+  spiritHealerBgImg.style.display = 'none'
   round.innerHTML = '1';
   lives.innerHTML = '3';
   hint.innerHTML = '3';
@@ -280,6 +285,7 @@ function restartGame() {
 function recordScore() {
   recordScreen.style.display = 'flex';
   gameOverScreen.style.display = 'none';
+  spiritHealerBgImg.style.display = 'none'
 
   const saveButton = document.getElementById('save-button');
   const cancel = document.getElementById('cancel');

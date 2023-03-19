@@ -240,16 +240,28 @@ html, body {
   background-color: red;
 }
 
+.bg-img-game-over {
+  height: 100%;
+  background-image: url('images/spirit-healer.webp');
+  background-size: cover;
+}
+
 .game-over {
   flex-direction: column;
   justify-content: center;
   position: absolute;
   z-index: 2;
-  height: 100%;
-  width: 50%;
+  width: 40%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #000000b4;
+  color: var(--font-color);
+  font-family: var(--font);
+  font-weight: bold;
 }
 
 .game-over h2 {
