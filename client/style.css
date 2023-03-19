@@ -105,6 +105,8 @@ html, body {
   font-family: var(--font);
   font-weight: bold;
   font-size: 25px;
+  color: var(--font-color);
+  background-color: rgba(0, 0, 0, 0.616);
 }
 
 .game-container {
