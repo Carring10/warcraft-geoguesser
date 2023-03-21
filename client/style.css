@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   height: 100%;
   overflow-y: hidden;
+  background-color: black;
 }
 
 :root {
@@ -240,10 +241,12 @@ html, body {
   background-color: red;
 }
 
-.bg-img-game-over {
-  height: 100%;
-  background-image: url('images/spirit-healer.webp');
-  background-size: cover;
+.spirit-healer {
+  height: 400px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game-over {
@@ -251,13 +254,13 @@ html, body {
   justify-content: center;
   position: absolute;
   z-index: 2;
-  width: 40%;
+  width: 30%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 2px solid black;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   background-color: #000000b4;
   color: var(--font-color);
   font-family: var(--font);
