@@ -322,7 +322,13 @@ html, body {
 }
 
 .record-score {
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 40%;
   text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--font-color);
 }

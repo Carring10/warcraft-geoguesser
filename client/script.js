@@ -296,6 +296,7 @@ function recordScore() {
   cancel.addEventListener('click', function () {
     recordScreen.style.display = 'none';
     gameOverScreen.style.display = 'flex';
+    spiritHealerBgImg.style.display = 'flex';
   });
 }
 
