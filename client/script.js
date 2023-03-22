@@ -264,6 +264,10 @@ function gameOver() {
   const userRounds = localStorage.getItem('round');
   const userScore = localStorage.getItem('score');
 
+  if (stats.firstChild) {
+    stats.removeChild(stats.firstChild);
+  }
+
   stats.appendChild(statMessage);
 
   statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore + ".";
