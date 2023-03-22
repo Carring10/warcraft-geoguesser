@@ -286,7 +286,7 @@ function restartGame() {
 function recordScore() {
   recordScreen.style.display = 'flex';
   gameOverScreen.style.display = 'none';
-  spiritHealerBgImg.style.display = 'none'
+  spiritHealerBgImg.style.display = 'flex'
 
   const saveButton = document.getElementById('save-button');
   const cancel = document.getElementById('cancel');
