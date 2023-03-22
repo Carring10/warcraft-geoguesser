@@ -62,6 +62,7 @@ recordButton.addEventListener('click', recordScore);
 function startGame() {
   startScreen.style.display = 'none';
   gameContainer.style.display = 'flex';
+  bgImg.style.display = 'flex';
   gameStats.style.display = 'flex';
   next.style.display = 'none';
 

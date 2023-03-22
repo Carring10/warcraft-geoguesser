@@ -283,8 +283,45 @@ html, body {
   gap: 10px;
 }
 
+#play-button {
+  font-family: var(--font);;
+  font-weight: bold;
+  font-size: 15px;
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  border: 3px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--font-color);
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#play-button:hover {
+  background-color: red;
+}
+
+#record-button {
+  font-family: var(--font);;
+  font-weight: bold;
+  font-size: 15px;
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  border: 3px solid var(--border-color);
+  border-radius: 5px;
+  color: var(--font-color);
+  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  transition: 0.3s;
+}
+
+#record-button:hover {
+  background-color: red;
+}
+
 .record-score {
-  display: flex;
   justify-content: center;
   width: 100%;
   text-align: center;
