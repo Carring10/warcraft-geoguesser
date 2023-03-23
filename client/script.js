@@ -62,6 +62,7 @@ recordButton.addEventListener('click', recordScore);
 function startGame() {
   startScreen.style.display = 'none';
   gameContainer.style.display = 'flex';
+  leaderBoard.style.display = 'flex';
   bgImg.style.display = 'flex';
   gameStats.style.display = 'flex';
   next.style.display = 'none';
@@ -342,7 +343,7 @@ function showleaderBoard() {
   const homeScreen = document.getElementById('home-screen');
 
   homeScreen.addEventListener('click', function () {
-    leaderBoard.style.display = 'none';
+    // leaderBoard.style.display = 'none';
     startScreen.style.display = 'flex';
     bgImg.style.display = 'flex';
 
