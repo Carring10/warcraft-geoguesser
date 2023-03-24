@@ -24,7 +24,7 @@ const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
 const leaderBoard = document.querySelector('.leaderboard');
-const showLeaderBoard = document.getElementById('show-leaderboard');
+const revealLeaderBoard = document.getElementById('reveal-leaderboard');
 
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
@@ -44,6 +44,8 @@ function hideElements() {
 }
 
 start.addEventListener('click', startGame);
+
+revealLeaderBoard.addEventListener('click', showleaderBoard)
 
 lastSession.addEventListener('click', getLastSession);
 
@@ -337,23 +339,19 @@ function submitScore() {
 
 function showleaderBoard() {
   leaderBoard.style.display = 'flex';
-  gameContainer.style.display = 'none';
-  gameStats.style.display = 'none';
 
-  const homeScreen = document.getElementById('home-screen');
+  const players = document.getElementById('players');
+  // homeScreen.addEventListener('click', function () {
+  //   startScreen.style.display = 'flex';
+  //   bgImg.style.display = 'flex';
 
-  homeScreen.addEventListener('click', function () {
-    // leaderBoard.style.display = 'none';
-    startScreen.style.display = 'flex';
-    bgImg.style.display = 'flex';
+  //   round.innerHTML = '1';
+  //   lives.innerHTML = '3';
+  //   hint.innerHTML = '3';
+  //   score.innerHTML = '0';
 
-    round.innerHTML = '1';
-    lives.innerHTML = '3';
-    hint.innerHTML = '3';
-    score.innerHTML = '0';
-
-    reset();
-  })
+  //   reset();
+  // })
 
   fetch('http://localhost:3001/users')
     .then(function (response) {
@@ -373,14 +371,14 @@ function showleaderBoard() {
       users.sort((a, b) => b.score - a.score);
 
       users.forEach((user) => {
-        const userName = document.createElement('h2');
+        const userName = document.createElement('p');
         const userScore = document.createElement('p');
 
-        userName.textContent = user.username;
+        userName.textContent = user.username + " " + user.score;
         userScore.textContent = user.score;
 
-        leaderBoard.appendChild(userName);
-        leaderBoard.appendChild(userScore);
+        players.appendChild(userName);
+        // players.appendChild(userScore);
       });
     })
     .catch((error) => {

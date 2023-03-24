@@ -108,10 +108,19 @@ html, body {
 }
 
 .leaderboard {
+  flex-direction: column;
   position: absolute;
   top: 15%;
   left: 90%;
   z-index: 2;
+}
+
+.leaderboard-button-container {
+  display: flex;
+}
+
+#players {
+  border: 2px solid var(--border-color);
 }
 
 .game-container {
