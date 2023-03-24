@@ -120,6 +120,9 @@ html, body {
 }
 
 #players {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   border: 2px solid var(--border-color);
 }
 

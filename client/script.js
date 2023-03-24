@@ -33,6 +33,7 @@ function hideElements() {
   gameContainer.style.display = 'none';
   gameStats.style.display = 'none';
   leaderBoard.style.display = 'none';
+  players.style.display = 'none';
   gameOverScreen.style.display = 'none';
   spiritHealerBgImg.style.display = 'none';
   lastSession.style.display = 'none';
@@ -338,20 +339,17 @@ function submitScore() {
 }
 
 function showleaderBoard() {
-  leaderBoard.style.display = 'flex';
-
   const players = document.getElementById('players');
-  // homeScreen.addEventListener('click', function () {
-  //   startScreen.style.display = 'flex';
-  //   bgImg.style.display = 'flex';
 
-  //   round.innerHTML = '1';
-  //   lives.innerHTML = '3';
-  //   hint.innerHTML = '3';
-  //   score.innerHTML = '0';
+  leaderBoard.style.display = 'flex';
+  revealLeaderBoard.innerHTML = '&#9660'
 
-  //   reset();
-  // })
+  if (players.style.display == 'none') {
+    players.style.display = 'flex';
+  } else {
+    players.style.display = 'none'
+    revealLeaderBoard.innerHTML = '&#9650'
+  }
 
   fetch('http://localhost:3001/users')
     .then(function (response) {
