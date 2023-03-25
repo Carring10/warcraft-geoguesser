@@ -111,14 +111,16 @@ html, body {
   flex-direction: column;
   position: absolute;
   top: 15%;
-  left: 90%;
+  left: 80%;
+  width: 15%;
   z-index: 2;
 }
 
 .leaderboard-button-container {
   display: flex;
   gap: 5px;
-  align-items: flex-end;
+  justify-content: center;
+  margin: 5px;
 }
 
 #reveal-leaderboard {
@@ -143,10 +145,25 @@ html, body {
 }
 
 #players {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
   border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.616);
+  color: var(--font-color);
+  padding: 10px;
+  font-family: var(--font);
+}
+
+#username {
+  text-align: center;
+  font-weight: bold;
+}
+
+#user-score {
+  text-align: center;
+  font-weight: bold;
 }
 
 .game-container {

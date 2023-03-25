@@ -340,6 +340,8 @@ function submitScore() {
 
 function showleaderBoard() {
   const players = document.getElementById('players');
+  const player = document.getElementById('username');
+  const playerScore = document.getElementById('user-score');
 
   leaderBoard.style.display = 'flex';
   revealLeaderBoard.innerHTML = '&#9660'
@@ -372,11 +374,11 @@ function showleaderBoard() {
         const userName = document.createElement('p');
         const userScore = document.createElement('p');
 
-        userName.textContent = user.username + " " + user.score;
+        userName.textContent = user.username;
         userScore.textContent = user.score;
 
-        players.appendChild(userName);
-        // players.appendChild(userScore);
+        player.appendChild(userName);
+        playerScore.appendChild(userScore);
       });
     })
     .catch((error) => {
