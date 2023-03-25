@@ -259,6 +259,7 @@ function gameOver() {
   gameContainer.style.display = 'none';
   gameStats.style.display = 'none';
   bgImg.style.display = 'none';
+  leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'flex';
   spiritHealerBgImg.style.display = 'flex'
 
