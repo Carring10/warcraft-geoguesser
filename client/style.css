@@ -126,7 +126,13 @@ html, body {
   height: 20px;
   background-color: var(--main-color);
   color: var(--font-color);
+  box-shadow: 0 0 5px rgba(0,0,0,0.9) inset;
   border-radius: 4px;
+  transition: 0.2s;
+}
+
+#reveal-leaderboard:hover {
+  background-color: red;
 }
 
 .leaderboard-button-container p {
