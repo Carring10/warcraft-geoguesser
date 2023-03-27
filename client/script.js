@@ -1,7 +1,15 @@
 import { zones } from './zones.js';
 
 const bgImg = document.querySelector('.bg-img');
+const spiritHealerBgImg = document.querySelector('.spirit-healer');
+// Views
 const startScreen = document.querySelector('.start-screen');
+const gameOverScreen = document.querySelector('.game-over');
+const recordScreen = document.querySelector('.record-score');
+const endScreen = document.querySelector('.end-screen');
+const leaderBoard = document.querySelector('.leaderboard');
+const revealLeaderBoard = document.getElementById('reveal-leaderboard');
+// Start Game
 const start = document.getElementById('start-button');
 const lastSession = document.getElementById('last-session');
 // Game info
@@ -13,19 +21,13 @@ const score = document.getElementById('score');
 const hintMessage = document.getElementById('hint-message');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
-const spiritHealerBgImg = document.querySelector('.spirit-healer');
-const gameOverScreen = document.querySelector('.game-over');
 const recordButton = document.getElementById('record-button');
-const recordScreen = document.querySelector('.record-score');
-const endScreen = document.querySelector('.end-screen');
 // Zone info
 const zoneImg = document.getElementById('zone-screenshot');
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
-const leaderBoard = document.querySelector('.leaderboard');
-const revealLeaderBoard = document.getElementById('reveal-leaderboard');
 
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
@@ -41,6 +43,7 @@ function hideElements() {
   recordScreen.style.display = 'none';
   endScreen.style.display = 'none';
 
+  // If user's previous game didn't end in death, give the option to resume their last game
   if (localStorage.getItem('lives') > 0) {
     lastSession.style.display = 'flex';
   }
@@ -144,7 +147,6 @@ function showZone(zone) {
     input.setAttribute('id', 'input');
   }
 
-
   if (zone.name.includes(' ')) {
     const gap = document.createElement('div');
     const indexOfSpace = zone.name.indexOf(' ');
@@ -241,6 +243,7 @@ function handleInput() {
 
 function reset() {
   userInput = [];
+
   hintButton.style.display = 'flex';
   next.replaceWith(submit);
 
@@ -248,6 +251,7 @@ function reset() {
     hintButton.style.display = 'none';
   }
 
+  // Remove the previous input fields and hint message to prevent the new elements appending to the previous elements
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
   }
@@ -271,6 +275,7 @@ function gameOver() {
   const userRounds = localStorage.getItem('round');
   const userScore = localStorage.getItem('score');
 
+  // Remove the previous game's stat message 
   if (stats.firstChild) {
     stats.removeChild(stats.firstChild);
   }
@@ -343,10 +348,9 @@ function submitScore() {
         const refreshPage = () => {
           location.reload();
         }
+        showleaderBoard();
 
         home.addEventListener('click', refreshPage);
-
-        showleaderBoard();
       }
       return response.json();
     })
@@ -378,7 +382,7 @@ function showleaderBoard() {
       return response.json();
     })
     .then(function (data) {
-      // sort user's scores into descending order
+      // Sort user's scores into descending order
       let users = [];
 
       for (let i = 0; i < data.users.length; i++) {
