@@ -330,8 +330,13 @@ function submitScore() {
 
         const successMessage = document.createElement('h2');
         const home = document.createElement('button');
+
+        successMessage.setAttribute('class', 'success-message');
+        home.setAttribute('class', 'home-button');
+
         endScreen.appendChild(successMessage);
         endScreen.appendChild(home);
+
         successMessage.innerText = "Success! Your score has been submitted to the leaderboard."
         home.innerHTML = "Return to homescreen"
 
