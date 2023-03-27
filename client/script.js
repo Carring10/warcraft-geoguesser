@@ -17,6 +17,7 @@ const spiritHealerBgImg = document.querySelector('.spirit-healer');
 const gameOverScreen = document.querySelector('.game-over');
 const recordButton = document.getElementById('record-button');
 const recordScreen = document.querySelector('.record-score');
+const endScreen = document.querySelector('.end-screen');
 // Zone info
 const zoneImg = document.getElementById('zone-screenshot');
 const zoneName = document.getElementById('zone-name');
@@ -38,6 +39,7 @@ function hideElements() {
   spiritHealerBgImg.style.display = 'none';
   lastSession.style.display = 'none';
   recordScreen.style.display = 'none';
+  endScreen.style.display = 'none';
 
   if (localStorage.getItem('lives') > 0) {
     lastSession.style.display = 'flex';
@@ -322,9 +324,12 @@ function submitScore() {
     .then((response) => {
       if (response.ok) {
         recordScreen.style.display = 'none';
+        spiritHealerBgImg.style.display = 'none';
+        bgImg.style.display = 'flex';
+        endScreen.style.display = 'flex';
 
         const successMessage = document.createElement('h2');
-        leaderBoard.appendChild(successMessage);
+        endScreen.appendChild(successMessage);
         successMessage.innerText = "Success! Your score has been submitted to the leaderboard."
 
         showleaderBoard();
