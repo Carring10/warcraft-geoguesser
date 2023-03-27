@@ -329,8 +329,17 @@ function submitScore() {
         endScreen.style.display = 'flex';
 
         const successMessage = document.createElement('h2');
+        const home = document.createElement('button');
         endScreen.appendChild(successMessage);
+        endScreen.appendChild(home);
         successMessage.innerText = "Success! Your score has been submitted to the leaderboard."
+        home.innerHTML = "Return to homescreen"
+
+        const refreshPage = () => {
+          location.reload();
+        }
+
+        home.addEventListener('click', refreshPage);
 
         showleaderBoard();
       }
