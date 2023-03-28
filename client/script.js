@@ -287,8 +287,6 @@ function gameOver() {
 
   statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore + ".";
 
-  console.log(Number(userRounds))
-  console.log(zones.length)
   if (Number(userRounds) === zones.length) {
     spiritHealerBgImg.style.display = 'none';
     bgImg.style.display = 'flex';
