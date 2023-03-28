@@ -127,7 +127,7 @@ function getNextZone() {
   if (zone !== undefined) {
     showZone(zone);
   } else {
-    showleaderBoard();
+    gameOver();
   }
 }
 
@@ -267,10 +267,11 @@ function gameOver() {
   bgImg.style.display = 'none';
   leaderBoard.style.display = 'none';
   gameOverScreen.style.display = 'flex';
-  spiritHealerBgImg.style.display = 'flex'
+  spiritHealerBgImg.style.display = 'flex';
 
   const stats = document.getElementById('stats');
   const statMessage = document.createElement('p');
+  const gameResult = document.getElementById('game-result');
   const playAgain = document.getElementById('play-button');
   const userRounds = localStorage.getItem('round');
   const userScore = localStorage.getItem('score');
@@ -280,9 +281,20 @@ function gameOver() {
     stats.removeChild(stats.firstChild);
   }
 
+  gameResult.innerHTML = "You ran out of lives..."
+
   stats.appendChild(statMessage);
 
   statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore + ".";
+
+  console.log(Number(userRounds))
+  console.log(zones.length)
+  if (Number(userRounds) === zones.length) {
+    spiritHealerBgImg.style.display = 'none';
+    bgImg.style.display = 'flex';
+
+    gameResult.innerHTML = "Congrats! You won!"
+  }
 
   playAgain.addEventListener('click', restartGame);
 }
