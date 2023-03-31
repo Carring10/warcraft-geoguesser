@@ -32,22 +32,11 @@ const next = document.getElementById('next');
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
 
-function hideElements() {
-  gameContainer.style.display = 'none';
-  gameStats.style.display = 'none';
-  leaderBoard.style.display = 'none';
-  players.style.display = 'none';
-  gameOverScreen.style.display = 'none';
-  spiritHealerBgImg.style.display = 'none';
-  lastSession.style.display = 'none';
-  recordScreen.style.display = 'none';
-  endScreen.style.display = 'none';
-
-  // If user's previous game didn't end in death, give the option to resume their last game
-  if (localStorage.getItem('lives') > 0) {
-    lastSession.style.display = 'flex';
-  }
+// If user's previous game didn't end in death, give the option to resume their last game
+if (localStorage.getItem('lives') > 0) {
+  lastSession.style.display = 'flex';
 }
+
 
 start.addEventListener('click', startGame);
 
@@ -358,6 +347,7 @@ function submitScore() {
         const refreshPage = () => {
           location.reload();
         }
+
         showleaderBoard();
 
         home.addEventListener('click', refreshPage);
@@ -420,4 +410,4 @@ function showleaderBoard() {
     });
 }
 
-hideElements();
+

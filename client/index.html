@@ -19,13 +19,13 @@
     <button id="start-button">Start</button>
     <button id="last-session">Continue last session?</button>
   </div>
-  <div class="game-info">
+  <div class="game-info" hidden>
     <p>Round: <span id="round">1</span></p>
     <p>Lives: <span id="lives">3</span></p>
     <p>Hints Remaining: <span id="hint">3</span></p>
     <p>Score: <span id="score">0</span></p>
   </div>
-  <div class="leaderboard">
+  <div class="leaderboard" hidden>
     <div class="leaderboard-button-container">
       <button id="reveal-leaderboard">&#9650</button>
       <p>Leaderboard</p>
@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <div class="game-container">
+  <div class="game-container" hidden>
     <div class="zone-container">
       <img id="zone-screenshot">
       <p id="zone-name"></p>
@@ -54,8 +54,8 @@
       <button id="next">Next</button>
     </div>
   </div>
-  <img class="spirit-healer" src="images/spirit-healer-gif.gif">
-  <div class="game-over">
+  <img class="spirit-healer" src="images/spirit-healer-gif.gif" hidden>
+  <div class="game-over" hidden>
     <h2 id="game-result"></h2>
     <div class="death-container">
       <div id="stats"></div>
@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div class="record-score">
+  <div class="record-score" hidden>
     <h2>Enter a username</h2>
     <input id="username-input">
     <div class="submit-options">
@@ -73,7 +73,7 @@
       <button id="cancel">Cancel</button>
     </div>
   </div>
-  <div class="end-screen"></div>
+  <div class="end-screen" hidden></div>
   <script type="module" src="./script.js"></script>
 </body>
 
