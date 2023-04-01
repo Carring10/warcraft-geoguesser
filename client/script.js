@@ -366,7 +366,6 @@ function showEndScreen() {
 function showleaderBoard() {
   const players = document.getElementById('players');
 
-  leaderBoard.style.display = 'flex';
   revealLeaderBoard.innerHTML = '&#9660'
 
   if (players.style.display == 'none') {
