@@ -352,6 +352,8 @@ function submitScore() {
         }
 
         home.addEventListener('click', refreshPage);
+
+        updateLeaderBoard();
       }
       return response.json();
     })
@@ -363,6 +365,21 @@ function submitScore() {
     });
 }
 
+function updateLeaderBoard() {
+  const player = document.getElementById('username');
+  const playerScore = document.getElementById('user-score');
+
+  while (player.firstChild) {
+    player.removeChild(player.firstChild);
+  }
+
+  while (playerScore.firstChild) {
+    playerScore.removeChild(playerScore.firstChild);
+  }
+
+  getAllPlayerData();
+}
+
 function showleaderBoard() {
   const players = document.getElementById('players');
 
@@ -371,6 +388,7 @@ function showleaderBoard() {
 
   if (players.style.display == 'none') {
     players.style.display = 'flex';
+
   } else {
     players.style.display = 'none'
     revealLeaderBoard.innerHTML = '&#9650'
@@ -408,7 +426,17 @@ function sortAndAppendData(data) {
   const player = document.getElementById('username');
   const playerScore = document.getElementById('user-score');
 
+  const usernameH3 = document.createElement('h3');
+  const scoreH3 = document.createElement('h3');
+
+  usernameH3.textContent = "Username:"
+  scoreH3.textContent = "Score:"
+
+  player.appendChild(usernameH3);
+  playerScore.appendChild(scoreH3);
+
   users.forEach((user) => {
+ 
     const userName = document.createElement('p');
     const userScore = document.createElement('p');
 
@@ -421,3 +449,4 @@ function sortAndAppendData(data) {
 }
 
 getAllPlayerData();
+
