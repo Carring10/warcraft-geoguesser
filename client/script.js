@@ -308,6 +308,7 @@ function recordScore() {
 
   saveButton.addEventListener('click', function () {
     submitScore();
+    // updateScore();
   });
 
   cancel.addEventListener('click', function () {
@@ -315,6 +316,32 @@ function recordScore() {
     gameOverScreen.style.display = 'flex';
     spiritHealerBgImg.style.display = 'flex';
   });
+}
+
+function showEndScreen() {
+  recordScreen.style.display = 'none';
+  spiritHealerBgImg.style.display = 'none';
+  bgImg.style.display = 'flex';
+  endScreen.style.display = 'flex';
+  leaderBoard.style.display = 'flex';
+
+  const successMessage = document.createElement('h2');
+  const home = document.createElement('button');
+
+  successMessage.setAttribute('class', 'success-message');
+  home.setAttribute('class', 'home-button');
+
+  endScreen.appendChild(successMessage);
+  endScreen.appendChild(home);
+
+  successMessage.innerText = "Success! Your score has been submitted to the leaderboard.";
+  home.innerHTML = "Return to homescreen";
+
+  const refreshPage = () => {
+    location.reload();
+  }
+
+  home.addEventListener('click', refreshPage);
 }
 
 function submitScore() {
@@ -329,30 +356,7 @@ function submitScore() {
   })
     .then((response) => {
       if (response.ok) {
-        recordScreen.style.display = 'none';
-        spiritHealerBgImg.style.display = 'none';
-        bgImg.style.display = 'flex';
-        endScreen.style.display = 'flex';
-        leaderBoard.style.display = 'flex';
-
-        const successMessage = document.createElement('h2');
-        const home = document.createElement('button');
-
-        successMessage.setAttribute('class', 'success-message');
-        home.setAttribute('class', 'home-button');
-
-        endScreen.appendChild(successMessage);
-        endScreen.appendChild(home);
-
-        successMessage.innerText = "Success! Your score has been submitted to the leaderboard.";
-        home.innerHTML = "Return to homescreen";
-
-        const refreshPage = () => {
-          location.reload();
-        }
-
-        home.addEventListener('click', refreshPage);
-
+        showEndScreen();
         updateLeaderBoard();
       }
       return response.json();
@@ -363,6 +367,32 @@ function submitScore() {
     .catch((error) => {
       console.log('error:', error);
     });
+}
+
+function updateScore() {
+  const usernameInput = document.getElementById('username-input');
+  const username = usernameInput.value.trim();
+  const score = parseInt(localStorage.getItem('score'));
+
+  fetch('http://localhost:3001/users/' + username, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, score }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        showEndScreen();
+        updateLeaderBoard();
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('success!:', data);
+    })
+    .catch((error) => {
+      console.log('error:', error);
+    });
+
 }
 
 function updateLeaderBoard() {
@@ -436,7 +466,7 @@ function sortAndAppendData(data) {
   playerScore.appendChild(scoreH3);
 
   users.forEach((user) => {
- 
+
     const userName = document.createElement('p');
     const userScore = document.createElement('p');
 
@@ -449,4 +479,3 @@ function sortAndAppendData(data) {
 }
 
 getAllPlayerData();
-
