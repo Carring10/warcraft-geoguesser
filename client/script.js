@@ -306,7 +306,9 @@ function recordScore() {
   const saveButton = document.getElementById('save-button');
   const cancel = document.getElementById('cancel');
 
-  saveButton.addEventListener('click', submitScore);
+  saveButton.addEventListener('click', function () {
+    submitScore();
+  });
 
   cancel.addEventListener('click', function () {
     recordScreen.style.display = 'none';
@@ -331,6 +333,7 @@ function submitScore() {
         spiritHealerBgImg.style.display = 'none';
         bgImg.style.display = 'flex';
         endScreen.style.display = 'flex';
+        leaderBoard.style.display = 'flex';
 
         const successMessage = document.createElement('h2');
         const home = document.createElement('button');
@@ -341,14 +344,12 @@ function submitScore() {
         endScreen.appendChild(successMessage);
         endScreen.appendChild(home);
 
-        successMessage.innerText = "Success! Your score has been submitted to the leaderboard."
-        home.innerHTML = "Return to homescreen"
+        successMessage.innerText = "Success! Your score has been submitted to the leaderboard.";
+        home.innerHTML = "Return to homescreen";
 
         const refreshPage = () => {
           location.reload();
         }
-
-        showleaderBoard();
 
         home.addEventListener('click', refreshPage);
       }
@@ -364,8 +365,6 @@ function submitScore() {
 
 function showleaderBoard() {
   const players = document.getElementById('players');
-  const player = document.getElementById('username');
-  const playerScore = document.getElementById('user-score');
 
   leaderBoard.style.display = 'flex';
   revealLeaderBoard.innerHTML = '&#9660'
@@ -376,38 +375,49 @@ function showleaderBoard() {
     players.style.display = 'none'
     revealLeaderBoard.innerHTML = '&#9650'
   }
+}
 
+function getAllPlayerData() {
   fetch('http://localhost:3001/users')
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // Sort user's scores into descending order
-      let users = [];
-
-      for (let i = 0; i < data.users.length; i++) {
-        const user = data.users[i].username;
-        const score = data.users[i].score;
-
-        users.push({ 'username': user, 'score': score });
-      }
-
-      users.sort((a, b) => b.score - a.score);
-
-      users.forEach((user) => {
-        const userName = document.createElement('p');
-        const userScore = document.createElement('p');
-
-        userName.textContent = user.username;
-        userScore.textContent = user.score;
-
-        player.appendChild(userName);
-        playerScore.appendChild(userScore);
-      });
+      console.log('success!:', data);
+      sortAndAppendData(data);
     })
     .catch((error) => {
       console.log('error:', error);
     });
 }
 
+function sortAndAppendData(data) {
+  // Sort user's scores into descending order
+  let users = [];
+  console.log(users);
 
+  for (let i = 0; i < data.users.length; i++) {
+    const user = data.users[i].username;
+    const score = data.users[i].score;
+
+    users.push({ 'username': user, 'score': score });
+  }
+
+  users.sort((a, b) => b.score - a.score);
+
+  const player = document.getElementById('username');
+  const playerScore = document.getElementById('user-score');
+
+  users.forEach((user) => {
+    const userName = document.createElement('p');
+    const userScore = document.createElement('p');
+
+    userName.textContent = user.username;
+    userScore.textContent = user.score;
+
+    player.appendChild(userName);
+    playerScore.appendChild(userScore);
+  });
+}
+
+getAllPlayerData();
