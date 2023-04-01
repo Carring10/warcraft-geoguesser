@@ -307,8 +307,23 @@ function recordScore() {
   const cancel = document.getElementById('cancel');
 
   saveButton.addEventListener('click', function () {
-    submitScore();
-    // updateScore();
+    const usernameEl = document.getElementById('username');
+    const usernames = usernameEl.children;
+    const usernameInput = document.getElementById('username-input');
+    const usernameIn = usernameInput.value.trim();
+
+    let usernameArray = []
+
+    Array.from(usernames, (username) => {
+      const usernameValues = username.innerHTML;
+      usernameArray.push(usernameValues);
+    });
+
+    if (usernameArray.includes(usernameIn)) {
+      updateScore();
+    } else {
+      submitScore();
+    }
   });
 
   cancel.addEventListener('click', function () {
@@ -392,7 +407,6 @@ function updateScore() {
     .catch((error) => {
       console.log('error:', error);
     });
-
 }
 
 function updateLeaderBoard() {
