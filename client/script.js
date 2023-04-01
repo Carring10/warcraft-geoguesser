@@ -265,7 +265,7 @@ function gameOver() {
   const userRounds = localStorage.getItem('round');
   const userScore = localStorage.getItem('score');
 
-  // Remove the previous game's stat message 
+  // Remove the previous game's stat message to replace with most recent game's stats
   if (stats.firstChild) {
     stats.removeChild(stats.firstChild);
   }
@@ -307,19 +307,23 @@ function recordScore() {
   const cancel = document.getElementById('cancel');
 
   saveButton.addEventListener('click', function () {
+    // HTML elements
     const usernameEl = document.getElementById('username');
-    const usernames = usernameEl.children;
-    const usernameInput = document.getElementById('username-input');
-    const usernameIn = usernameInput.value.trim();
+    const usernameInputEl = document.getElementById('username-input');
+    const usernameCollection = usernameEl.children;
+    // User's input
+    const usernameInput = usernameInputEl.value.trim();
 
     let usernameArray = []
 
-    Array.from(usernames, (username) => {
+    // Loop through HTMLCollection and push the values into an array
+    Array.from(usernameCollection, (username) => {
       const usernameValues = username.innerHTML;
       usernameArray.push(usernameValues);
     });
 
-    if (usernameArray.includes(usernameIn)) {
+    // If the player enters the username they play under, update that username's score, else create a new user
+    if (usernameArray.includes(usernameInput)) {
       updateScore();
     } else {
       submitScore();
@@ -357,6 +361,21 @@ function showEndScreen() {
   }
 
   home.addEventListener('click', refreshPage);
+}
+
+function showleaderBoard() {
+  const players = document.getElementById('players');
+
+  leaderBoard.style.display = 'flex';
+  revealLeaderBoard.innerHTML = '&#9660'
+
+  if (players.style.display == 'none') {
+    players.style.display = 'flex';
+
+  } else {
+    players.style.display = 'none'
+    revealLeaderBoard.innerHTML = '&#9650'
+  }
 }
 
 function submitScore() {
@@ -413,6 +432,7 @@ function updateLeaderBoard() {
   const player = document.getElementById('username');
   const playerScore = document.getElementById('user-score');
 
+  // Clear out HTML elements of usernames and scores to replace with the newest data
   while (player.firstChild) {
     player.removeChild(player.firstChild);
   }
@@ -422,21 +442,6 @@ function updateLeaderBoard() {
   }
 
   getAllPlayerData();
-}
-
-function showleaderBoard() {
-  const players = document.getElementById('players');
-
-  leaderBoard.style.display = 'flex';
-  revealLeaderBoard.innerHTML = '&#9660'
-
-  if (players.style.display == 'none') {
-    players.style.display = 'flex';
-
-  } else {
-    players.style.display = 'none'
-    revealLeaderBoard.innerHTML = '&#9650'
-  }
 }
 
 function getAllPlayerData() {
@@ -456,7 +461,6 @@ function getAllPlayerData() {
 function sortAndAppendData(data) {
   // Sort user's scores into descending order
   let users = [];
-  console.log(users);
 
   for (let i = 0; i < data.users.length; i++) {
     const user = data.users[i].username;
