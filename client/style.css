@@ -22,7 +22,7 @@ html, body {
 
 .start-screen {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -54,16 +54,14 @@ html, body {
   font-family: var(--font);
   font-size: 30px;
   font-weight: bold;
-  top: 38%;
-  position: absolute;
+  margin: 0px;
 }
 
 .instructions {
   font-family: var(--font);
   font-size: 25px;
   font-weight: bold;
-  top: 43%;
-  position: absolute;
+  margin: 0px;
 }
 
 #start-button {
@@ -76,7 +74,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  margin-top: 100px;
+  margin-top: 30px;
   box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
   transition: 0.3s;
 }
