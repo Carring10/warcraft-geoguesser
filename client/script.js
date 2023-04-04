@@ -91,6 +91,10 @@ function getLastSession() {
   hint.innerHTML = getHint;
   score.innerHTML = getScore;
 
+  if (hint.innerHTML == 0) {
+    hintButton.style.display = 'none';
+  }
+
   currentZoneIndex = localStorage.getItem('index');
   shuffledZones = getZones;
 
