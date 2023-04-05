@@ -17,7 +17,7 @@ html, body {
   background-image: url('images/azeroth.webp');
   background-size: cover;
   filter: blur(4px);
-  box-shadow: inset 0 0 0 2000px rgba(82, 51, 22, 0.425);
+  box-shadow: inset 0 0 0 2000px rgba(82, 51, 22, 0.637);
 }
 
 .start-screen {
@@ -117,6 +117,7 @@ html, body {
 .leaderboard {
   flex-direction: column;
   position: absolute;
+  font-size: 18px;
   top: 15%;
   left: 80%;
   width: 15%;
@@ -195,21 +196,21 @@ html, body {
 }
 
 #hint-button {
-  justify-content: center;
   cursor: pointer;
-  background-color: var(--main-color);
-  border: 3px solid var(--border-color);
-  border-radius: 5px;
-  color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
-  transition: 0.3s;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: bold;
   padding: 3px;
-  width: 100px;
+  width: 200px;
 }
 
 #hint-button:hover {
-  background-color: red;
+  text-decoration: underline;
 }
+
 
 #hint-message {
   width: 100%;
@@ -217,6 +218,7 @@ html, body {
 
 #hint-message p {
   margin: 0px;
+  padding: 3px;
   font-size: 20px;
 }
 
@@ -276,7 +278,9 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  font-size: 20px;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: bold;
   box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
   padding: 2px;
   transition: 0.3s;
