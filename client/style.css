@@ -248,7 +248,7 @@ html, body {
 
 #input {
   width: 20px;
-  padding: 5px;
+  padding: 7px;
   margin: 2px;
   border: 1px solid black;
   border-radius: 5px;
@@ -262,6 +262,7 @@ html, body {
 #input:focus {
   outline: none;
   border: 2px solid black;
+  padding: 6px;
 }
 
 .button-container {
