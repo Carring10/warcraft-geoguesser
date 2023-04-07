@@ -201,8 +201,9 @@ function handleInput() {
 
   if (inputStr === answerKey) {
     inputs.forEach((input) => {
-      input.style.border = '2px solid green'
-      input.style.backgroundColor = '#005707a1'
+      input.style.border = '2px solid green';
+      input.style.padding = '6px';
+      input.style.backgroundColor = '#005707a1';
     });
 
     let scoreValue = parseInt(score.innerHTML) + 10;
@@ -210,8 +211,9 @@ function handleInput() {
     score.innerHTML = scoreValue;
   } else if (inputStr !== '') {
     inputs.forEach((input) => {
-      input.style.border = '2px solid red'
-      input.style.backgroundColor = '#570000a1'
+      input.style.border = '2px solid red';
+      input.style.padding = '6px';
+      input.style.backgroundColor = '#570000a1';
     });
 
     lives.innerHTML--;

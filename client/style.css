@@ -203,6 +203,7 @@ html, body {
   font-family: var(--font);
   font-size: 18px;
   font-weight: bold;
+  font-style: italic;
   padding: 3px;
 }
 
@@ -214,6 +215,7 @@ html, body {
   margin: 0px;
   padding: 3px;
   font-size: 20px;
+  font-style: italic;
 }
 
 .zone-container {
