@@ -280,7 +280,7 @@ function gameOver() {
 
   stats.appendChild(statMessage);
 
-  statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore + ".";
+  statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore;
 
   if (Number(userRounds) === zones.length) {
     spiritHealerBgImg.style.display = 'none';
