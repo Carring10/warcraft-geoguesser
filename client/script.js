@@ -309,17 +309,16 @@ function recordScore() {
   gameOverScreen.style.display = 'none';
   spiritHealerBgImg.style.display = 'flex'
 
+  // HTML elements
+  const usernameEl = document.getElementById('username');
+  const usernameInputEl = document.getElementById('username-input').focus();
+  const usernameCollection = usernameEl.children;
   const saveButton = document.getElementById('save-button');
   const cancel = document.getElementById('cancel');
 
   saveButton.addEventListener('click', function () {
-    // HTML elements
-    const usernameEl = document.getElementById('username');
-    const usernameInputEl = document.getElementById('username-input');
-    const usernameCollection = usernameEl.children;
     // User's input
     const usernameInput = usernameInputEl.value.trim();
-
     let usernameArray = []
 
     // Loop through HTMLCollection and push the values into an array

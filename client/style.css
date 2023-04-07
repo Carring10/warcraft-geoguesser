@@ -421,6 +421,7 @@ html, body {
   font-family: var(--font);
   font-weight: bold;
   text-align: center;
+  outline: none;
 }
 
 .submit-options {
