@@ -12,7 +12,7 @@ const revealLeaderBoard = document.getElementById('reveal-leaderboard');
 // Start Game
 const start = document.getElementById('start-button');
 const lastSession = document.getElementById('last-session');
-// Game info
+// Game info constants
 const gameStats = document.querySelector('.game-info');
 const gameContainer = document.querySelector('.game-container');
 const round = document.getElementById('round');
@@ -22,7 +22,7 @@ const hintMessage = document.getElementById('hint-message');
 const hint = document.getElementById('hint');
 const hintButton = document.getElementById('hint-button');
 const recordButton = document.getElementById('record-button');
-// Zone info
+// Zone constants
 const zoneImg = document.getElementById('zone-screenshot');
 const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
@@ -135,6 +135,7 @@ function showZone(zone) {
     const input = document.createElement('input');
 
     inputFields.appendChild(input);
+    input.setAttribute('autocomplete', 'off');
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', '1');
     input.setAttribute('id', 'input');
