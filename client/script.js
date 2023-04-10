@@ -64,13 +64,28 @@ function startGame() {
   gameStats.style.display = 'flex';
   next.style.display = 'none';
 
+  // Shuffle zones and set the index to zero. The zone is set to the shuffled zone at the current index.
   shuffledZones = [...zones].sort(() => 0.5 - Math.random());
   currentZoneIndex = 0
   zone = shuffledZones[currentZoneIndex];
 
+  // Save the now shuffled array to local storage so a player can continue where they left off if need be.
   localStorage.setItem('shuffledZones', JSON.stringify(shuffledZones));
 
   showZone(zone);
+}
+
+function getNextZone() {
+  // Iterate through the shuffled zones by increasing the index.
+  currentZoneIndex++
+  zone = shuffledZones[currentZoneIndex];
+
+  // If a zone is undefined, that means the player has progressed through the entire array & there are no more zones left, so show the end game screen.
+  if (zone !== undefined) {
+    showZone(zone);
+  } else {
+    gameOver();
+  }
 }
 
 
@@ -80,21 +95,25 @@ function getLastSession() {
   gameStats.style.display = 'flex';
   next.style.display = 'none';
 
+  // Retrieve the players last game stats from local storage.
   const getRound = localStorage.getItem('round');
   const getLives = localStorage.getItem('lives');
   const getHint = localStorage.getItem('hint');
   const getScore = localStorage.getItem('score');
   const getZones = JSON.parse(localStorage.getItem('shuffledZones'));
 
+  // Set the display to their previous stats.
   round.innerHTML = getRound;
   lives.innerHTML = getLives;
   hint.innerHTML = getHint;
   score.innerHTML = getScore;
 
+  // If no more hints are left, remove the option to see the button.
   if (hint.innerHTML == 0) {
     hintButton.style.display = 'none';
   }
 
+  // Set the current index to the last index the player was on.
   currentZoneIndex = localStorage.getItem('index');
   shuffledZones = getZones;
 
@@ -104,6 +123,7 @@ function getLastSession() {
 }
 
 function revealHint() {
+  // Display the hint pertaining to the zone and subtract the amount of hints the player has left.
   hintButton.style.display = 'none';
   hint.innerHTML--;
 
@@ -113,45 +133,39 @@ function revealHint() {
   hintMessage.appendChild(hintText);
 }
 
-function getNextZone() {
-  currentZoneIndex++
-  zone = shuffledZones[currentZoneIndex];
-
-  if (zone !== undefined) {
-    showZone(zone);
-  } else {
-    gameOver();
-  }
-}
-
 function showZone(zone) {
   zoneImg.setAttribute('src', zone.img);
   zoneName.innerText = zone.name;
 
+  // Remember the index so the player can revisit where they had left off.
   localStorage.setItem('index', currentZoneIndex);
 
-
+// Create index boxes for each letter of the zone's name.
   for (let i = 0; i < zone.name.length; i++) {
     const input = document.createElement('input');
 
     inputFields.appendChild(input);
+
     input.setAttribute('autocomplete', 'off');
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', '1');
     input.setAttribute('id', 'input');
   }
 
+  // If there is a space in the zone's name, get the index of the space.
   if (zone.name.includes(' ')) {
     const gap = document.createElement('div');
     const indexOfSpace = zone.name.indexOf(' ');
     const space = inputFields.children[indexOfSpace];
 
+    // Replace the input box at the index of the space with a div, add margin so there is a gap between the strings and it appears to be an actual space.
     if (space != undefined) {
       space.replaceWith(gap);
       gap.style.margin = '5px';
     }
   }
 
+  // This zone is the only zone to have two spaces, so it needs two input boxes to be replaced.
   if (zone.name === 'Swamp of Sorrows') {
     const secondSpace = inputFields.children[8];
     const secondGap = document.createElement('div');
@@ -161,9 +175,9 @@ function showZone(zone) {
       secondGap.style.margin = '5px';
     }
   }
+
   // Auto focus the next input field
   inputFields.firstElementChild.focus();
-
   for (let input of inputFields.children) {
     input.oninput = function () {
       if (input.nextElementSibling && input.value.length === 1) {
@@ -193,13 +207,16 @@ function showZone(zone) {
 function handleInput() {
   const inputs = document.querySelectorAll('#input');
 
+  // Take the values of each input field and push them into the global array userInput.
   inputs.forEach((input) => {
     userInput.push(input.value);
   });
-  // Check user's answer
+
+  // Check user's answer, remove commas and spaces so they are just consistent strings.
   const inputStr = userInput.toString().replaceAll(',', '').toLowerCase();
   const answerKey = zone.name.toLowerCase().replaceAll(' ', '');
 
+  // Check the user's score & if they are correct, increase their score. If incorrect, decrease their lives. Add styling for visual confirmation.
   if (inputStr === answerKey) {
     inputs.forEach((input) => {
       input.style.border = '2px solid green';
@@ -219,7 +236,8 @@ function handleInput() {
 
     lives.innerHTML--;
   }
-  // To prevent user from moving on without attempting
+
+  // To prevent user from moving on without attempting.
   userInput.forEach((character) => {
     if (character !== '') {
       next.style.display = 'flex';
@@ -227,10 +245,12 @@ function handleInput() {
     }
   })
 
+  // If their lives reach zero, end the game.
   if (lives.innerText === '0') {
     gameOver();
   }
 
+  // Update the players stats in local storage after each round.
   localStorage.setItem('round', round.innerHTML);
   localStorage.setItem('lives', lives.innerHTML);
   localStorage.setItem('hint', hint.innerHTML);
@@ -238,6 +258,7 @@ function handleInput() {
 }
 
 function reset() {
+  // Clear their previous answer input.
   userInput = [];
 
   hintButton.style.display = 'flex';
@@ -247,7 +268,7 @@ function reset() {
     hintButton.style.display = 'none';
   }
 
-  // Remove the previous input fields and hint message to prevent the new elements appending to the previous elements
+  // Remove the previous input fields and hint message to prevent the new elements appending to the previous elements.
   while (inputFields.firstChild) {
     inputFields.removeChild(inputFields.firstChild);
   }
@@ -272,7 +293,7 @@ function gameOver() {
   const userRounds = localStorage.getItem('round');
   const userScore = localStorage.getItem('score');
 
-  // Remove the previous game's stat message to replace with most recent game's stats
+  // Remove the previous game's stat message to replace with most recent game's stats.
   if (stats.firstChild) {
     stats.removeChild(stats.firstChild);
   }
@@ -283,6 +304,7 @@ function gameOver() {
 
   statMessage.innerHTML = "You successfully completed " + userRounds + " rounds with a score of " + userScore;
 
+  // If the amount of rounds completed equals the length of the zones, that means the player has completed the game without running out of lives.
   if (Number(userRounds) === zones.length) {
     spiritHealerBgImg.style.display = 'none';
     bgImg.style.display = 'flex';
@@ -294,6 +316,7 @@ function gameOver() {
 }
 
 function restartGame() {
+  // Reset all the values.
   gameOverScreen.style.display = 'none';
   spiritHealerBgImg.style.display = 'none'
   round.innerHTML = '1';
@@ -322,13 +345,13 @@ function recordScore() {
     const usernameInput = usernameInputEl.value.trim();
     let usernameArray = []
 
-    // Loop through HTMLCollection and push the values into an array
+    // Loop through HTMLCollection and push the values into an array.
     Array.from(usernameCollection, (username) => {
       const usernameValues = username.innerHTML;
       usernameArray.push(usernameValues);
     });
 
-    // If the player enters the username they play under, update that username's score, else create a new user
+    // If the player enters the username they play under, update that username's score, else create a new user.
     if (usernameArray.includes(usernameInput)) {
       updateScore();
     } else {
@@ -350,6 +373,7 @@ function showEndScreen() {
   endScreen.style.display = 'flex';
   leaderBoard.style.display = 'flex';
 
+  // Confirmation their username and score was uploaded to the leaderboard.
   const successMessage = document.createElement('h2');
   const home = document.createElement('button');
 
@@ -384,6 +408,7 @@ function showleaderBoard() {
 }
 
 function submitScore() {
+  // Query the database with a new player and score.
   const usernameInput = document.getElementById('username-input');
   const username = usernameInput.value.trim();
   const score = parseInt(localStorage.getItem('score'));
@@ -409,6 +434,7 @@ function submitScore() {
 }
 
 function updateScore() {
+  // Update a specific username's score.
   const usernameInput = document.getElementById('username-input');
   const username = usernameInput.value.trim();
   const score = parseInt(localStorage.getItem('score'));
@@ -437,7 +463,7 @@ function updateLeaderBoard() {
   const player = document.getElementById('username');
   const playerScore = document.getElementById('user-score');
 
-  // Clear out HTML elements of usernames and scores to replace with the newest data
+  // Clear out HTML elements of usernames and scores to replace with the newest data.
   while (player.firstChild) {
     player.removeChild(player.firstChild);
   }
@@ -450,12 +476,14 @@ function updateLeaderBoard() {
 }
 
 function getAllPlayerData() {
+  // Query database.
   fetch('http://localhost:3001/users')
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log('success!:', data);
+      // Pass all the data from the database to the sortAndAppendData function, which then does exactly that so a user can see the scores from highest to lowest.
       sortAndAppendData(data);
     })
     .catch((error) => {
@@ -464,7 +492,7 @@ function getAllPlayerData() {
 }
 
 function sortAndAppendData(data) {
-  // Sort user's scores into descending order
+  // Sort user's scores into descending order.
   let users = [];
 
   for (let i = 0; i < data.users.length; i++) {

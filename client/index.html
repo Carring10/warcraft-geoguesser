@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <!-- Intro Screen -->
   <div class="bg-img"></div>
   <div class="start-screen">
     <img src="images/warcraft-logo.png" class="logo" alt="Warcraft Logo">
@@ -20,12 +21,14 @@
     <button id="start-button">Start</button>
     <button id="last-session" hidden>Continue last session?</button>
   </div>
+  <!-- Player's stats -->
   <div class="game-info" hidden>
     <p>Round: <span id="round">1</span></p>
     <p>Lives: <span id="lives">3</span></p>
     <p>Hints Remaining: <span id="hint">3</span></p>
     <p>Score: <span id="score">0</span></p>
   </div>
+  <!-- Leaderboard -->
   <div class="leaderboard" hidden>
     <div class="leaderboard-button-container">
       <button id="reveal-leaderboard">&#9650</button>
@@ -38,6 +41,7 @@
       </div>
     </div>
   </div>
+  <!-- Game controllers -->
   <div class="game-container" hidden>
     <div class="zone-container">
       <img id="zone-screenshot">
@@ -53,6 +57,7 @@
       <button id="next">Next</button>
     </div>
   </div>
+  <!-- Game over screen -->
   <img class="spirit-healer" src="images/spirit-healer-gif.gif" hidden>
   <div class="game-over" hidden>
     <h2 id="game-result"></h2>
@@ -64,6 +69,7 @@
       </div>
     </div>
   </div>
+  <!-- Submit score screen -->
   <div class="record-score" hidden>
     <h2>Enter a username</h2>
     <input id="username-input" autocomplete="off">
