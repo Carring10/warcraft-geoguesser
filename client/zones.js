@@ -23,12 +23,12 @@ export const zones = [
   {
     name: 'Felwood',
     img: 'images/zones/felwood.jpg',
-    hint: "It is a corrupted forest filled with tainted creatures of the woods, demonic satyr and infernals, and rotting treants and ancients."
+    hint: "It is a corrupted forest filled with tainted creatures of the woods."
   },
   {
     name: 'Ashenvale',
     img: 'images/zones/ashenvale.jpg',
-    hint: "This is one of the first contested zones new players on PvP servers will come across on kalimdor."
+    hint: "This is one of the first contested zones new players on PvP servers will come across on Kalimdor."
   },
   {
     name: 'Azshara',
@@ -58,7 +58,7 @@ export const zones = [
   {
     name: 'Mulgore',
     img: 'images/zones/mulgore.webp',
-    hint: "This zone is home to the instance Maraudon."
+    hint: "This is a plains zone located in central Kalimdor."
   },
   {
     name: 'Dustwallow Marsh',
@@ -88,7 +88,7 @@ export const zones = [
   {
     name: 'Tanaris',
     img: 'images/zones/tanaris.jpg',
-    hint: "In this zone, players can buy Noggenfogger Elixir, an unpredictable transformation elixir, from Marin Noggenfogger."
+    hint: "In this zone, players can buy Noggenfogger Elixir, an unpredictable transformation elixir."
   },
   // Eastern Kingdoms
   {
@@ -129,7 +129,7 @@ export const zones = [
   {
     name: 'Arathi Highlands',
     img: 'images/zones/arathi-highlands.jpg',
-    hint: "Stromgarde, the former capital of the kingdom of Arathor, has fallen in disrepair."
+    hint: "Stromgarde, the former capital from the kingdom of Arathor, has fallen in disrepair."
   },
   {
     name: 'Wetlands',
@@ -144,7 +144,7 @@ export const zones = [
   {
     name: 'Dun Morogh',
     img: 'images/zones/dun-morogh.jpg',
-    hint: "It is the starting zone for Dwarves and Gnomes, and contains both the starting area, Coldridge Valley, and the capitals for both races: Ironforge."
+    hint: "It is the starting zone for Dwarves and Gnomes, and contains the capitals for both races: Ironforge."
   },
   {
     name: 'Searing Gorge',
@@ -159,7 +159,7 @@ export const zones = [
   {
     name: 'Burning Steppes',
     img: 'images/zones/burning-steppes.jpg',
-    hint: "This is a rugged region full of crags and cliffs, and as harsh as the zone is, it serves as one of the only roads that connect Stormwind with the dwarven kingdom of Khaz Modan."
+    hint: "This is a rugged region full of crags and cliffs, it serves as one of the only roads that connect Stormwind with the dwarven kingdom of Khaz Modan."
   },
   {
     name: 'Redridge Mountains',
@@ -189,7 +189,7 @@ export const zones = [
   {
     name: 'Duskwood',
     img: 'images/zones/duskwood.jpg',
-    hint: "Here, many high level elites roam the area - The abomination Stitches is known to roam the way to the zone's main hub, Darkshire, and Mor'Ladim haunts the Raven Hill Cemetery."
+    hint: "Here, many high level elites roam the area - The abomination Stitches is known to roam the way to the zone's main hub, Darkshire."
   },
   {
     name: 'Westfall',
