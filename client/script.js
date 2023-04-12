@@ -28,7 +28,7 @@ const zoneName = document.getElementById('zone-name');
 const inputFields = document.getElementById('input-fields');
 const submit = document.getElementById('submit');
 const next = document.getElementById('next');
-
+// Variables to be updated
 let shuffledZones, currentZoneIndex, zone;
 let userInput = [];
 
@@ -40,7 +40,7 @@ if (localStorage.getItem('lives') > 0) {
 
 start.addEventListener('click', startGame);
 
-revealLeaderBoard.addEventListener('click', showleaderBoard)
+revealLeaderBoard.addEventListener('click', showleaderBoard);
 
 lastSession.addEventListener('click', getLastSession);
 
@@ -66,7 +66,7 @@ function startGame() {
 
   // Shuffle zones and set the index to zero. The zone is set to the shuffled zone at the current index.
   shuffledZones = [...zones].sort(() => 0.5 - Math.random());
-  currentZoneIndex = 0
+  currentZoneIndex = 0;
   zone = shuffledZones[currentZoneIndex];
 
   // Save the now shuffled array to local storage so a player can continue where they left off if need be.

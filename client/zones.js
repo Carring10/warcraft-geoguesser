@@ -169,7 +169,7 @@ export const zones = [
   {
     name: 'Elwynn Forest',
     img: 'images/zones/elwynn-forest.jpg',
-    hint: "The fearsome Hogger, king of the Gnolls, lives here. Hogger is much stronger than a mob of similar level, and there are many stories of players being slaughtered by him."
+    hint: "The fearsome Hogger, king of the Gnolls, lives here. Hogger is much stronger than other mobs, and there are many stories of players being slaughtered by him."
   },
   {
     name: 'Swamp of Sorrows',
@@ -199,6 +199,6 @@ export const zones = [
   {
     name: 'Stranglethorn Vale',
     img: 'images/zones/stranglethorn-vale.jpg',
-    hint: "This zone is home to many events: Every 3 hours, an all-out PvP event is hosted in the Gurubashi Arena, and every Sunday, there is a fishing contest in Booty Bay!"
+    hint: "Every 3 hours, an all-out PvP event is hosted in the Gurubashi Arena."
   }
 ];
