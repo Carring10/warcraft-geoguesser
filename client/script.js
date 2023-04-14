@@ -335,11 +335,13 @@ function recordScore() {
 
   // HTML elements
   const usernameEl = document.getElementById('username');
-  const usernameInputEl = document.getElementById('username-input').focus();
+  const usernameInputEl = document.getElementById('username-input');
   const usernameCollection = usernameEl.children;
   const saveButton = document.getElementById('save-button');
   const cancel = document.getElementById('cancel');
 
+  usernameInputEl.focus();
+  
   saveButton.addEventListener('click', function () {
     // User's input
     const usernameInput = usernameInputEl.value.trim();
