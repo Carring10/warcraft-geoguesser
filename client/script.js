@@ -9,6 +9,8 @@ const recordScreen = document.querySelector('.record-score');
 const endScreen = document.querySelector('.end-screen');
 const leaderBoard = document.querySelector('.leaderboard');
 const revealLeaderBoard = document.getElementById('reveal-leaderboard');
+const saveButton = document.getElementById('save-button');
+const cancel = document.getElementById('cancel');
 // Start Game
 const start = document.getElementById('start-button');
 const lastSession = document.getElementById('last-session');
@@ -54,7 +56,15 @@ next.addEventListener('click', () => {
   getNextZone();
 });
 
-recordButton.addEventListener('click', recordScore);
+recordButton.addEventListener('click', showRecordScreen);
+
+saveButton.addEventListener('click', recordScore);
+
+cancel.addEventListener('click', function () {
+  recordScreen.style.display = 'none';
+  gameOverScreen.style.display = 'flex';
+  spiritHealerBgImg.style.display = 'flex';
+});
 
 function startGame() {
   startScreen.style.display = 'none';
@@ -328,44 +338,36 @@ function restartGame() {
   startGame();
 }
 
-function recordScore() {
+function showRecordScreen() {
   recordScreen.style.display = 'flex';
   gameOverScreen.style.display = 'none';
-  spiritHealerBgImg.style.display = 'flex'
+  spiritHealerBgImg.style.display = 'flex';
 
+  document.getElementById('username-input').focus();
+}
+
+function recordScore() {
   // HTML elements
   const usernameEl = document.getElementById('username');
   const usernameInputEl = document.getElementById('username-input');
   const usernameCollection = usernameEl.children;
-  const saveButton = document.getElementById('save-button');
-  const cancel = document.getElementById('cancel');
-
-  usernameInputEl.focus();
   
-  saveButton.addEventListener('click', function () {
-    // User's input
-    const usernameInput = usernameInputEl.value.trim();
-    let usernameArray = []
+  // User's input
+  const usernameInput = usernameInputEl.value.trim();
+  let usernameArray = []
 
-    // Loop through HTMLCollection and push the values into an array.
-    Array.from(usernameCollection, (username) => {
-      const usernameValues = username.innerHTML;
-      usernameArray.push(usernameValues);
-    });
-
-    // If the player enters the username they play under, update that username's score, else create a new user.
-    if (usernameArray.includes(usernameInput)) {
-      updateScore();
-    } else {
-      submitScore();
-    }
+  // Loop through HTMLCollection and push the values into an array.
+  Array.from(usernameCollection, (username) => {
+    const usernameValues = username.innerHTML;
+    usernameArray.push(usernameValues);
   });
 
-  cancel.addEventListener('click', function () {
-    recordScreen.style.display = 'none';
-    gameOverScreen.style.display = 'flex';
-    spiritHealerBgImg.style.display = 'flex';
-  });
+  // If the player enters the username they play under, update that username's score, else create a new user.
+  if (usernameArray.includes(usernameInput)) {
+    updateScore();
+  } else {
+    submitScore();
+  }
 }
 
 function showEndScreen() {
