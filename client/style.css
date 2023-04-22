@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0px;
   padding: 0px;
   height: 100%;
@@ -10,12 +11,12 @@ html, body {
   --main-color: #710200;
   --border-color: #383135;
   --font-color: #b49901;
-  --font: 'Cinzel', serif;
+  --font: "Cinzel", serif;
 }
 
 .bg-img {
   height: 100%;
-  background-image: url('images/azeroth.webp');
+  background-image: url("images/azeroth.webp");
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -46,7 +47,7 @@ html, body {
 }
 
 .title {
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: "Rubik Mono One", sans-serif;
   color: black;
   font-size: 70px;
   width: 600px;
@@ -69,7 +70,7 @@ html, body {
 }
 
 #start-button {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 25px;
   width: 250px;
@@ -79,7 +80,7 @@ html, body {
   border-radius: 5px;
   color: var(--font-color);
   margin-top: 30px;
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -88,7 +89,7 @@ html, body {
 }
 
 #last-session {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   margin: 15px;
@@ -141,7 +142,7 @@ html, body {
   width: 35px;
   background-color: var(--main-color);
   color: var(--font-color);
-  box-shadow: 0 0 5px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.9) inset;
   border-radius: 4px;
   border: 1px solid var(--border-color);
   transition: 0.2s;
@@ -235,7 +236,9 @@ html, body {
   width: 889px;
   margin: 20px;
   border: 2px solid white;
-  box-shadow: rgba(0, 0, 0, 0.56) 10px 10px 50px 0px, rgba(0, 0, 0, 0.56) 10px -10px 50px 0px, rgba(0, 0, 0, 0.56) -10px 10px 50px 0px, rgba(0, 0, 0, 0.56) -10px -10px 50px 0px;
+  box-shadow: rgba(0, 0, 0, 0.56) 10px 10px 50px 0px,
+    rgba(0, 0, 0, 0.56) 10px -10px 50px 0px, rgba(0, 0, 0, 0.56) -10px 10px 50px 0px,
+    rgba(0, 0, 0, 0.56) -10px -10px 50px 0px;
 }
 
 #zone-name {
@@ -285,7 +288,7 @@ html, body {
   font-family: var(--font);
   font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   padding: 2px;
   transition: 0.3s;
 }
@@ -305,7 +308,7 @@ html, body {
   font-family: var(--font);
   font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -359,7 +362,7 @@ html, body {
 }
 
 #play-button {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   width: 150px;
@@ -369,7 +372,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -378,7 +381,7 @@ html, body {
 }
 
 #record-button {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   width: 150px;
@@ -388,7 +391,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -437,7 +440,7 @@ html, body {
 }
 
 #save-button {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   width: 120px;
@@ -447,7 +450,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -456,7 +459,7 @@ html, body {
 }
 
 #cancel {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   width: 120px;
@@ -466,7 +469,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -492,7 +495,7 @@ html, body {
 }
 
 .home-button {
-  font-family: var(--font);;
+  font-family: var(--font);
   font-weight: bold;
   font-size: 15px;
   width: 250px;
@@ -502,7 +505,7 @@ html, body {
   border: 3px solid var(--border-color);
   border-radius: 5px;
   color: var(--font-color);
-  box-shadow: 0 0 9px rgba(0,0,0,0.9) inset;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.9) inset;
   transition: 0.3s;
 }
 
@@ -511,13 +514,24 @@ html, body {
 }
 
 /* Smaller Screens */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1075px) {
+  .game-info {
+    gap: 120px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .start-screen {
+    top: 70%;
+  }
+
   .logo {
     height: 350px;
   }
 
   .title {
     font-size: 60px;
+    margin: 0px;
   }
 
   .flavor-text {
@@ -536,5 +550,27 @@ html, body {
   .leaderboard {
     font-size: 18px;
     top: 22%;
+  }
+
+  .game-info {
+    gap: 100px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 770px) {
+  .game-info {
+    gap: 70px;
+    font-size: 20px;
+  }
+
+  #zone-screenshot {
+    height: 400px;
+    width: 689px;
+  }
+
+  .leaderboard {
+    font-size: 18px;
+    top: 10%;
   }
 }
