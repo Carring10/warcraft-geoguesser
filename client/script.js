@@ -411,30 +411,29 @@ function showleaderBoard() {
   }
 }
 
-function submitScore() {
-  // Query the database with a new player and score.
-  const usernameInput = document.getElementById('username-input');
-  const username = usernameInput.value.trim();
-  const score = parseInt(localStorage.getItem('score'));
+async function submitScore() {
+  try {
+    // Query the database with a new player and score.
+    const usernameInput = document.getElementById('username-input');
+    const username = usernameInput.value.trim();
+    const score = parseInt(localStorage.getItem('score'));
 
-  fetch('http://localhost:3001/users', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, score }),
-  })
-    .then((response) => {
-      if (response.ok) {
-        showEndScreen();
-        updateLeaderBoard();
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log('success!:', data);
-    })
-    .catch((error) => {
-      console.log('error:', error);
+    const response = await fetch('http://localhost:3001/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, score }),
     });
+
+    if (response.ok) {
+      showEndScreen();
+      updateLeaderBoard();
+    }
+
+    const data = await response.json();
+    console.log('success!:', data);
+  } catch (error) {
+    console.log('error:', error);
+  }
 }
 
 function updateScore() {

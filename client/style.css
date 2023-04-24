@@ -557,7 +557,7 @@ body {
   }
 }
 
-/* Mobile */
+/* Tablets */
 @media screen and (max-width: 770px) {
   .game-info {
     gap: 70px;
@@ -573,4 +573,9 @@ body {
     font-size: 18px;
     top: 10%;
   }
+}
+
+/* Mobile */
+@media screen and (max-width: 770px) {
+  
 }
