@@ -411,6 +411,8 @@ function showleaderBoard() {
   }
 }
 
+// Database queries
+
 async function submitScore() {
   try {
     // Query the database with a new player and score.
@@ -477,20 +479,17 @@ function updateLeaderBoard() {
   getAllPlayerData();
 }
 
-function getAllPlayerData() {
-  // Query database.
-  fetch('http://localhost:3001/users')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log('success!:', data);
-      // Pass all the data from the database to the sortAndAppendData function, which then does exactly that so a user can see the scores from highest to lowest.
-      sortAndAppendData(data);
-    })
-    .catch((error) => {
-      console.log('error:', error);
-    });
+async function getAllPlayerData() {
+  try {
+    // Query database.
+    const response = await fetch('http://localhost:3001/users');
+    const data = await response.json();
+    console.log('success!:', data);
+    // Pass all the data from the database to the sortAndAppendData function, which then does exactly that so a user can see the scores from highest to lowest.
+    sortAndAppendData(data);
+  } catch (error) {
+    console.log('error:', error);
+  }
 }
 
 function sortAndAppendData(data) {
