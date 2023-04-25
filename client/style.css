@@ -351,6 +351,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   padding: 10px;
   font-size: 15px;
 }
@@ -576,7 +577,7 @@ body {
 }
 
 /* Mobile */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .start-screen {
     top: 65%;
   }
@@ -595,5 +596,35 @@ body {
 
   .instructions {
     font-size: 15px;
+  }
+
+  .game-info {
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  #zone-screenshot {
+    width: 90%;
+    height: auto;
+  }
+
+  .leaderboard {
+    font-size: 20px;
+    left: 75%;
+  }
+
+  #input {
+    display: flex;
+    flex-wrap: wrap;
+    width: 10px;
+    height: 10px;
+  }
+
+  .game-over {
+    width: 320px;
+  }
+
+  .record-score {
+    width: 320px;
   }
 }
