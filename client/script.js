@@ -175,6 +175,13 @@ function showZone(zone) {
       space.replaceWith(gap);
       gap.style.margin = '5px';
     }
+
+    // Make a line break on mobile screens
+    const mediaQuery = window.matchMedia('(max-width: 700px)');
+
+    if (mediaQuery.matches) {
+      gap.style.width = '100%';
+    }
   }
 
   // This zone is the only zone to have two spaces, so it needs two input boxes to be replaced.

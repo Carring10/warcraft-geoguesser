@@ -612,8 +612,6 @@ body {
   }
 
   #input {
-    display: flex;
-    flex-wrap: wrap;
     width: 10px;
     height: 10px;
   }
@@ -628,5 +626,79 @@ body {
 
   .record-score {
     width: 320px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .start-screen {
+    top: 65%;
+  }
+
+  .logo {
+    height: 250px;
+  }
+  
+  .title {
+    font-size: 35px;
+  }
+
+  .flavor-text {
+    font-size: 18px;
+  }
+
+  .instructions {
+    font-size: 12px;
+  }
+
+  .game-info {
+    gap: 18px;
+    font-size: 14px;
+  }
+
+  #zone-screenshot {
+    width: 95%;
+    height: auto;
+  }
+
+  .leaderboard {
+    left: 50%;
+    top: 10%;
+    font-size: 15px;
+  }
+
+  #reveal-leaderboard {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    padding: 0px;
+    text-align: center;
+  }
+
+  #hint-button {
+    font-size: 15px;
+  }
+
+  #hint-message p {
+    font-size: 15px;
+  }
+
+  #input-fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px;
+  }
+
+  #input {
+    width: 9px;
+    height: 9px;
+    font-size: 10px;
+  }
+
+  #submit {
+    margin: 25px;
+  }
+
+  #next {
+    margin: 25px;
   }
 }

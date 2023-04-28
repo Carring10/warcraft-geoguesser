@@ -1,6 +1,6 @@
 # World of Warcraft Geoguesser Game
 
-*[Link to Live Site]()*
+*[This goes no where yet]()*
 
 Welcome to the World of Warcraft Geoguesser game! In this game, users are presented with an in-game screenshot and must guess the name of the zone it was taken in. You have 3 lives and 3 hints to help you along the way. Every incorrect guess subtracts a life.
 
