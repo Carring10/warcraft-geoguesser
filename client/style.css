@@ -125,7 +125,6 @@ body {
   font-size: 20px;
   top: 20%;
   left: 80%;
-  width: 15%;
   z-index: 3;
 }
 
@@ -559,7 +558,7 @@ body {
 }
 
 /* Tablets */
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 880px) {
   .game-info {
     gap: 70px;
     font-size: 20px;
@@ -572,7 +571,16 @@ body {
 
   .leaderboard {
     font-size: 18px;
-    top: 10%;
+    top: 15%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+  }
+
+  #input-fields.div::after {
+    content: "\a";
+    white-space: pre;
   }
 }
 
@@ -604,13 +612,16 @@ body {
   }
 
   #zone-screenshot {
-    width: 90%;
+    width: 95%;
     height: auto;
   }
 
   .leaderboard {
-    font-size: 20px;
-    left: 75%;
+    font-size: 18px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
   }
 
   #input {
@@ -618,6 +629,10 @@ body {
     flex-wrap: wrap;
     width: 10px;
     height: 10px;
+  }
+
+  #space {
+    margin: 30px;
   }
 
   .game-over {

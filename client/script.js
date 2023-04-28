@@ -168,6 +168,8 @@ function showZone(zone) {
     const indexOfSpace = zone.name.indexOf(' ');
     const space = inputFields.children[indexOfSpace];
 
+    gap.setAttribute('id', 'space');
+
     // Replace the input box at the index of the space with a div, add margin so there is a gap between the strings and it appears to be an actual space.
     if (space != undefined) {
       space.replaceWith(gap);
