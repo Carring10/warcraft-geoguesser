@@ -123,6 +123,7 @@ body {
   flex-direction: column;
   position: fixed;
   font-size: 20px;
+  width: 260px;
   top: 20%;
   left: 80%;
   z-index: 3;
@@ -548,8 +549,8 @@ body {
   }
 
   .leaderboard {
-    font-size: 18px;
-    top: 22%;
+    font-size: 15px;
+    width: 200px;
   }
 
   .game-info {
@@ -570,17 +571,7 @@ body {
   }
 
   .leaderboard {
-    font-size: 18px;
-    top: 15%;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-  }
-
-  #input-fields.div::after {
-    content: "\a";
-    white-space: pre;
+    left: 75%
   }
 }
 
@@ -617,11 +608,7 @@ body {
   }
 
   .leaderboard {
-    font-size: 18px;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
+    left: 70%;
   }
 
   #input {
