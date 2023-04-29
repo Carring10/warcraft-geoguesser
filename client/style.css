@@ -549,7 +549,7 @@ body {
   }
 
   .leaderboard {
-    font-size: 15px;
+    font-size: 20px;
     width: 200px;
   }
 
@@ -571,7 +571,12 @@ body {
   }
 
   .leaderboard {
-    left: 75%
+    left: 75%;
+    top: 10%;
+  }
+
+  #players {
+    font-size: 15px;
   }
 }
 
@@ -629,7 +634,7 @@ body {
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 415px) {
   .start-screen {
     top: 65%;
   }
@@ -661,7 +666,7 @@ body {
   }
 
   .leaderboard {
-    left: 50%;
+    left: 44%;
     top: 10%;
     font-size: 15px;
   }
@@ -700,5 +705,9 @@ body {
 
   #next {
     margin: 25px;
+  }
+
+  .success-message {
+    font-size: 20px;
   }
 }
