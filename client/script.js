@@ -68,6 +68,7 @@ cancel.addEventListener('click', function () {
 
 function startGame() {
   startScreen.style.display = 'none';
+  zoneName.style.display = 'none';
   gameContainer.style.display = 'flex';
   leaderBoard.style.display = 'flex';
   bgImg.style.display = 'flex';
@@ -240,6 +241,7 @@ function handleInput() {
       input.style.padding = '6px';
       input.style.backgroundColor = '#005707a1';
 
+      zoneName.style.display = 'flex';
       zoneName.innerText = "Correct! This zone is " + zone.name;
     });
 
@@ -252,6 +254,7 @@ function handleInput() {
       input.style.padding = '6px';
       input.style.backgroundColor = '#570000a1';
 
+      zoneName.style.display = 'flex';
       zoneName.innerText = "Better luck next time! It's " + zone.name;
     });
 
@@ -282,7 +285,7 @@ function reset() {
   // Clear their previous answer input.
   userInput = [];
 
-  zoneName.innerHTML = "";
+  zoneName.style.display = 'none';
 
   hintButton.style.display = 'flex';
   next.replaceWith(submit);
