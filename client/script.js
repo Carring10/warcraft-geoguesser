@@ -145,7 +145,6 @@ function revealHint() {
 
 function showZone(zone) {
   zoneImg.setAttribute('src', zone.img);
-  // zoneName.innerText = zone.name;
 
   // Remember the index so the player can revisit where they had left off.
   localStorage.setItem('index', currentZoneIndex);
@@ -240,6 +239,8 @@ function handleInput() {
       input.style.border = '2px solid green';
       input.style.padding = '6px';
       input.style.backgroundColor = '#005707a1';
+
+      zoneName.innerText = "Correct! This zone is " + zone.name;
     });
 
     let scoreValue = parseInt(score.innerHTML) + 10;
@@ -250,6 +251,8 @@ function handleInput() {
       input.style.border = '2px solid red';
       input.style.padding = '6px';
       input.style.backgroundColor = '#570000a1';
+
+      zoneName.innerText = "Better luck next time! It's " + zone.name;
     });
 
     lives.innerHTML--;
@@ -278,6 +281,8 @@ function handleInput() {
 function reset() {
   // Clear their previous answer input.
   userInput = [];
+
+  zoneName.innerHTML = "";
 
   hintButton.style.display = 'flex';
   next.replaceWith(submit);
