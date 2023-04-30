@@ -145,6 +145,7 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.9) inset;
   border-radius: 4px;
   border: 1px solid var(--border-color);
+  cursor: pointer;
   transition: 0.2s;
 }
 
