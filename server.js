@@ -18,3 +18,10 @@ app.use("/users", require("./server/routes/userRoutes"));
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Condition for production 
+
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+  });
