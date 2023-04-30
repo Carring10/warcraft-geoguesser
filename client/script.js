@@ -145,7 +145,7 @@ function revealHint() {
 
 function showZone(zone) {
   zoneImg.setAttribute('src', zone.img);
-  zoneName.innerText = zone.name;
+  // zoneName.innerText = zone.name;
 
   // Remember the index so the player can revisit where they had left off.
   localStorage.setItem('index', currentZoneIndex);
@@ -210,9 +210,8 @@ function showZone(zone) {
     // When backspacing, focus the previous input field
     input.onkeydown = function (event) {
       const key = event.key;
-      if (input.previousElementSibling && key === 'Backspace' || key === 'Delete') {
+      if (input.previousElementSibling && inputFields.lastElementChild.value === '' && key === 'Backspace' || key === 'Delete') {
         input.previousElementSibling.focus();
-        inputFields.lastElementChild.value = '';
 
         // Skip over div to focus previous input element
         if (input.previousElementSibling.nodeName == 'DIV') {
