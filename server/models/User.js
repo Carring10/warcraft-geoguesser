@@ -1,4 +1,4 @@
-const db = require('../config/connection').default;
+const db = require('../config/connection');
 
 class User {
   constructor(username, score) {
