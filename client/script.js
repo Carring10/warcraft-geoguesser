@@ -483,8 +483,7 @@ async function getAllPlayerData() {
     // Query database.
     const response = await fetch('/users');
     const data = await response.json();
-    console.log(response)
-    console.log(data)
+    
     console.log('success!:', data);
     // Pass all the data from the database to the sortAndAppendData function, which then does exactly that so a user can see the scores from highest to lowest.
     sortAndAppendData(data);
