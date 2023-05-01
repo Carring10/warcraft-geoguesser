@@ -6,7 +6,7 @@ class User {
     this.score = score;
   }
 
-  findAll() {
+  static findAll() {
     let sql = "SELECT * FROM users;";
 
     return db.execute(sql);
