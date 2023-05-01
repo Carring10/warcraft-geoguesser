@@ -3,7 +3,8 @@ const User = require('../models/User');
 exports.getAllUsers = async (req, res) => {
   try {
     // Underscore to ignore field data
-    const [users, _] = await User.findAll();
+    const [users, _] = await User.findAll({ raw: true });
+    console.log(users)
 
     res.status(200).json({ users });
   } catch (err) {
