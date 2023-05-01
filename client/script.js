@@ -435,7 +435,7 @@ async function submitScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('https://fm9xiidzi5y90r1c:gnoqlx24thjg4cbw@eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/n6qtcuaah15kocjl/users', {
+    const response = await fetch('api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -460,7 +460,7 @@ async function updateScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('https://fm9xiidzi5y90r1c:gnoqlx24thjg4cbw@eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/n6qtcuaah15kocjl/users/' + username, {
+    const response = await fetch('api/users/' + username, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -481,7 +481,7 @@ async function updateScore() {
 async function getAllPlayerData() {
   try {
     // Query database.
-    const response = await fetch('https://fm9xiidzi5y90r1c:gnoqlx24thjg4cbw@eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/n6qtcuaah15kocjl/users');
+    const response = await fetch('api/users');
     const data = await response.json();
     console.log(response)
     console.log(data)
