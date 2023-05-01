@@ -3,9 +3,8 @@ const User = require('../models/User');
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll();
-    const rows = users.map(user => user.get({ plain: true }));
 
-    res.status(200).json({ rows });
+    res.status(200).json({ users });
   } catch (err) {
     console.log(err);
   }
