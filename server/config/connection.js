@@ -1,14 +1,14 @@
-import { createConnection } from "mysql2";
-import { promisify } from "util";
+const mysql = require("mysql2");
+const util = require("util");
 require('dotenv').config();
 
 let connection;
 
 if (process.env.JAWSDB_URL) {
-  connection = createConnection(process.env.JAWSDB_URL);
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
   console.log('Connected to JawsDB database.');
 } else {
-  connection = createConnection({
+  connection = mysql.createConnection({
     host: 'localhost',
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
@@ -18,6 +18,6 @@ if (process.env.JAWSDB_URL) {
 }
 
 // promise wrapper to enable async await with MYSQL
-connection.query = promisify(connection.query).bind(connection);
+connection.query = util.promisify(connection.query).bind(connection);
 
-export default connection;
+module.exports = connection;
