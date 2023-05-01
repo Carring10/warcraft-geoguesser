@@ -4,6 +4,7 @@ exports.getAllUsers = async (req, res) => {
   try {
     // Underscore to ignore field data
     const [users, _] = await User.findAll();
+    console.log(users)
 
     res.status(200).json({ users });
   } catch (err) {
