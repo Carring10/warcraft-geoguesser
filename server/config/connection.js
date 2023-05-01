@@ -16,6 +16,7 @@ if (process.env.JAWSDB_URL) {
   console.log('Connected to the local database.');
 }
 
-connection.connect();
+// promise wrapper to enable async await with MYSQL
+connection.query = util.promisify(connection.query).bind(connection);
 
 module.exports = connection;
