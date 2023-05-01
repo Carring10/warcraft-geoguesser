@@ -25,3 +25,7 @@ app.use(express.static("client"));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "index.html"));
 });
+
+connection.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
