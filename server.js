@@ -22,6 +22,6 @@ app.listen(PORT, () => {
 
 // Condition for production 
 app.use(express.static("client"));
-app.get("*", (req, res) => {
+app.get("/users", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "index.html"));
 });
