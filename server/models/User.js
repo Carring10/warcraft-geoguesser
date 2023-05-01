@@ -9,7 +9,9 @@ class User {
   static findAll() {
     let sql = "SELECT * FROM users;";
 
-    return db.execute(sql);
+    const users = db.execute(sql);
+
+    return users;
   }
   // Save new user to the database
   create() {
