@@ -5,6 +5,7 @@ let connection;
 
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
+  console.log('Connected to JawsDB database.');
 } else {
   connection = mysql.createConnection({
     host: 'localhost',
@@ -12,7 +13,7 @@ if (process.env.JAWSDB_URL) {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   });
-  console.log(`Connected to the database.`);
+  console.log('Connected to the local database.');
 }
 
 connection.connect();
