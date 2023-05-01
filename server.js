@@ -6,7 +6,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const connection = require('./server/config/connection');
+const connection = require('./server/config/connection').default;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
