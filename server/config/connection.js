@@ -15,4 +15,6 @@ if (process.env.JAWSDB_URL) {
   console.log(`Connected to the local database.`);
 }
 
+connection.connect();
+
 module.exports = connection;
