@@ -435,7 +435,7 @@ async function submitScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('api/users', {
+    const response = await fetch('http://localhost:3001/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -460,7 +460,7 @@ async function updateScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('api/users/' + username, {
+    const response = await fetch('http://localhost:3001/users/' + username, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -481,7 +481,7 @@ async function updateScore() {
 async function getAllPlayerData() {
   try {
     // Query database.
-    const response = await fetch('api/users');
+    const response = await fetch('http://localhost:3001/users');
     const data = await response.json();
     console.log(response)
     console.log(data)
