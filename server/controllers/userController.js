@@ -2,7 +2,8 @@ const User = require('../models/User');
 
 exports.getAllUsers = async (req, res) => {
   try {
-    const [rows, fields] = await User.findAll();
+    const users = await User.findAll();
+    const rows = users.map(user => user.get({ plain: true }));
 
     res.status(200).json({ rows });
   } catch (err) {
