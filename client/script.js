@@ -435,7 +435,7 @@ async function submitScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('/users', {
+    const response = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -460,7 +460,7 @@ async function updateScore() {
     const username = usernameInput.value.trim();
     const score = parseInt(localStorage.getItem('score'));
 
-    const response = await fetch('/users/' + username, {
+    const response = await fetch('/' + username, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, score }),
@@ -481,7 +481,7 @@ async function updateScore() {
 async function getAllPlayerData() {
   try {
     // Query database.
-    const response = await fetch('/users');
+    const response = await fetch('/');
     const data = await response.json();
     console.log('success!:', data);
     // Pass all the data from the database to the sortAndAppendData function, which then does exactly that so a user can see the scores from highest to lowest.
