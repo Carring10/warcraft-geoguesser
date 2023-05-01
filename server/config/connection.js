@@ -12,7 +12,7 @@ if (process.env.JAWSDB_URL) {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
   });
-  console.log(`Connected to the local database.`);
+  console.log(`Connected to the database.`);
 }
 
 connection.connect();
