@@ -21,7 +21,7 @@ app.listen(PORT, () => {
 });
 
 // Condition for production 
-app.use(express.static("build"));
+app.use(express.static("client"));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "index.html"));
 });
