@@ -481,7 +481,7 @@ async function updateScore() {
 async function getAllPlayerData() {
   try {
     // Query database.
-    const response = await fetch('/');
+    const response = await fetch('/users');
     console.log(response)
     const data = await response.json();
 
