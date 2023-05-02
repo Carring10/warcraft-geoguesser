@@ -18,6 +18,17 @@ if (process.env.JAWSDB_URL) {
 }
 
 // promise wrapper to enable async await with MYSQL
-connection.query = util.promisify(connection.query).bind(connection);
+// connection.query = util.promisify(connection.query).bind(connection);
+db.connect((err) => {
+  if (err) throw err;
+});
 
-module.exports = connection;
+let sql = "SELECT * FROM users;";
+
+db.execute(sql, function (err, result) {
+  if (err) throw err;
+
+  console.log(result);
+})
+
+module.exports = db.promise();
