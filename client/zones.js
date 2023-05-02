@@ -93,7 +93,7 @@ export const zones = [
   // Eastern Kingdoms
   {
     name: 'Tirisfal Glades',
-    img: 'images/zones/darkshore.jpg',
+    img: 'images/zones/tirisfal-glades.jpg',
     hint: "The capital city of the Forsaken, Undercity, is located here."
   },
   {
