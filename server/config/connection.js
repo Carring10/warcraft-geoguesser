@@ -20,12 +20,4 @@ db.connect((err) => {
   if (err) throw err;
 });
 
-// let sql = "SELECT * FROM users;";
-
-// db.execute(sql, function (err, result) {
-//   if (err) throw err;
-
-//   console.log(result);
-// });
-
 module.exports = db.promise();
