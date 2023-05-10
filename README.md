@@ -6,14 +6,13 @@ Welcome to the World of Warcraft Geoguesser game! In this game, users are presen
 
 At the end of the game, you have the option to save your score to the leaderboard. Your score will be updated in the database if you play under the same username.
 
-## Screenshot
 ![Warcraft Geoguesser](client/images/warcraft-geoguesser.png)
+
+## Video
+*[Click here to watch a demo](https://www.awesomescreenshot.com/video/17033580?key=71927cc2c3f4a6c8615ffd9b1ccb47b2)*
 
 ## Technologies Used
 - JavaScript
 - Express
 - Node.js
 - MySQL
-
-## Video
-*[Click here to watch a demo](https://www.awesomescreenshot.com/video/17033580?key=71927cc2c3f4a6c8615ffd9b1ccb47b2)*
